@@ -1,0 +1,9 @@
+/* .navbar-color {
+  background: rgb(251,251,251);
+  background: linear-gradient(90deg, rgba(251,251,251,1) 0%, rgba(235,245,255,1) 50%, rgba(60,85,176,1) 100%);
+} */
+
+.navbarColor {
+  /* For WebKit */
+  background: -webkit-gradient(linear, right top, left top, from(rgba(255,0,0,1)), to(rgba(0,255,0,.25)));
+}

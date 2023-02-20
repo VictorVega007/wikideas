@@ -1,0 +1,13 @@
+.containeImg {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchInputContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
