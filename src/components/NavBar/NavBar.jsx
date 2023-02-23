@@ -3,6 +3,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Tooltip, Avatar, Button } from "@mui/material";
 import { Logo } from "../Icon/Logo";
 import { useState } from "react";
+import {} from '../../styles/navbar.scss';
 
 const pages = ['Categorias', 'Nosotros', 'Blog'];
 const settings = [ 'Perfil', 'Cuenta', 'Dashboard', 'Cerrar Sesión' ];
