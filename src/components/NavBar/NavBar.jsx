@@ -1,4 +1,3 @@
-import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Tooltip, Avatar, Button } from "@mui/material";
 import { Logo } from "../Icon/Logo";
@@ -80,7 +79,7 @@ export const NavBar = (props) => {
             </Menu>
           </Box>
 
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -97,7 +96,7 @@ export const NavBar = (props) => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            <Logo href="/" width={200} height={60}/>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end'}}>
             {pages.map((page) => (

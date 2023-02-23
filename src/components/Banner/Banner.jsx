@@ -1,7 +1,7 @@
 import Background from "../../assets/img2.jpg";
+import { HomeTitle } from "../HomeTitle/HomeTitle"
 import { NavBar } from "../NavBar/NavBar";
 import "./Banner.css";
-import "../NavBar/NavBar.css";
 import { SearchInput } from "../SearchInput/SearchInput";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material";
@@ -36,6 +36,7 @@ export const Banner = () => {
         backgroundSize: 'cover'
         }} className="containeImg">
           <NavBar />
+          <HomeTitle />
           <div className="searchInputContainer">
             <SearchInput />
           </div>
