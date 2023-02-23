@@ -1,31 +1,14 @@
 import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Tooltip, Avatar, Button } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Logo } from "../Icon/Logo";
 import { useState } from "react";
 
 const pages = ['Categorias', 'Nosotros', 'Blog'];
 const settings = [ 'Perfil', 'Cuenta', 'Dashboard', 'Cerrar Sesión' ];
 
-const theme = createTheme({
-  status: {
-    danger: '#e53e3e',
-  },
-  palette: {
-    primary: {
-      main: '#0971f1',
-      darker: '#053e85',
-    },
-    neutral: {
-      main: '#64748B',
-      contrastText: '#fff',
-    },
-  },
-});
-
-export const NavBar = () => {
-  // const { color } = props;
+export const NavBar = (props) => {
+  const { color } = props;
   const [ anchorNav, setAnchorNav ] = useState(null);
   const [ anchorUser , setAnchorUser ] = useState(null);
 
@@ -46,9 +29,8 @@ export const NavBar = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-    <AppBar position="static" color="danger">
-      <Container maxWidth="xl">
+    <AppBar position="static"  className={color}>
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
          
           <Typography
@@ -161,6 +143,5 @@ export const NavBar = () => {
         </Toolbar>
       </Container>
     </AppBar>
-    </ThemeProvider>
   )
 }

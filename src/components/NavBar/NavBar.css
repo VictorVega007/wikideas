@@ -5,5 +5,5 @@
 
 .navbarColor {
   /* For WebKit */
-  background: -webkit-gradient(linear, right top, left top, from(rgba(255,0,0,1)), to(rgba(0,255,0,.25)));
+  background: -webkit-gradient(linear, right top, left top, from(rgba(255,0,0,1)), to(rgba(0, 34, 255, 0.25)));
 }
