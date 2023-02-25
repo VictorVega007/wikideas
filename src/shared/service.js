@@ -1,19 +1,15 @@
 import axios from "axios";
 
-const url = "https://wikideas-adriana75.vercel.app/api/v1/topics";
+const client = axios.create({
+  baseURL: "https://wikideas-adriana75.vercel.app/api/v1/topics",
+});
 
 export const getTopics = async () => {
   try {
-    const response = await axios.get(url);
-    const data = await response.data;
-    // console.log(data);
+    const response = await client.get();
+    const data = response.data;
     return data;
   } catch (error) {
-    // console.log(error);
     return error.message;
   }
 };
-
-const { data } = getTopics();
-
-console.log(data);

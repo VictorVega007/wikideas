@@ -1,32 +1,28 @@
 import { Autocomplete, Stack, TextField } from "@mui/material"
 import { Button } from "../../atoms/button/Button";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import axios from "axios";
 import { useState, useEffect } from "react";
 import {} from '../../styles/navbar.scss';
-
-const client = axios.create({
-  baseURL: "https://wikideas-adriana75.vercel.app/api/v1/topics",
-})
+import { getTopics } from "../../shared/service";
 
 export const SearchInput = () => {
   const [ data, setData ] = useState(null);
 
   useEffect(() => {
     const getTitle = async () => {
-      const response = await client.get();
-      setData(response.data);
+      const response = await getTopics();
+      const title = response.map(option => option.title);
+      setData(title);
     };
     getTitle();
-  }, []);
-  // console.log(data)
+  }, [data]);
 
   return (
     <>
     <Stack spacing={2}>
       <Autocomplete
         id="search-input"
-        options={!data ? [] : data.map((option) => option.title)}
+        options={!data ? [] : data}
         renderInput={params => (
           <TextField 
             {...params}

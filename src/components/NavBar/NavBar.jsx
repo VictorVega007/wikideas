@@ -98,12 +98,18 @@ export const NavBar = (props) => {
           >
             <Logo href="/" width={200} height={60}/>
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end'}}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block', width: '10%'}}
+                sx={{ 
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  width: '10%', 
+                }}
               >
                 {page}
               </Button>
