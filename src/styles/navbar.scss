@@ -17,6 +17,10 @@
     padding: 60px 500px 100px 70px;
 }
 
+.css-1t3jnaw-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator{
+    display: none !important;
+}
+
 .searchInputContainer{
     height: 20px;
 }
@@ -37,4 +41,31 @@
 .separator {
     width: 100%;
     border: 1.3px solid #83B1F6
+}
+
+body{
+    background-image: url(../assets/8.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: 100% 100%
+}
+
+.static-img-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 300px;
+}
+
+.static-img {
+    height: 80%;
+}
+
+@media only screen and (max-width: 1000px) {
+    body {
+    background-image: url(../assets/Banner.png);
+    background-size: 80%;
+    }
 }

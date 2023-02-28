@@ -1,5 +1,5 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Tooltip, Avatar, Button } from "@mui/material";
+import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Button } from "@mui/material";
 import { Logo } from "../Icon/Logo";
 import { useState } from "react";
 import {} from '../../styles/navbar.scss';
@@ -16,9 +16,9 @@ export const NavBar = (props) => {
     setAnchorNav(event.currentTarget);
   };
 
-  const handleOpenUserMenu = (event) => {
-    setAnchorUser(event.currentTarget);
-  };
+  // const handleOpenUserMenu = (event) => {
+  //   setAnchorUser(event.currentTarget);
+  // };
 
   const handleCloseNavMenu = () => {
     setAnchorNav(null);
@@ -39,7 +39,7 @@ export const NavBar = (props) => {
             href="/"
             sx={{ display: { xs: 'none', md: 'flex' }} }
           >
-             <Logo href="/" width={200} height={60}/>
+             <Logo href="/" width={200} height={60} />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -117,11 +117,11 @@ export const NavBar = (props) => {
           </Box>
 
           <Box sx={{ flexGrow: 0, width: '5%' }}>
-            <Tooltip title="Open settings">
+            {/* <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Victor" src="../../static/images/Avatar.png" />
               </IconButton>
-            </Tooltip>
+            </Tooltip> */}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
