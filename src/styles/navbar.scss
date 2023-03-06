@@ -63,6 +63,55 @@ body{
     height: 80%;
 }
 
+.cards-container {
+    display: flex;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    height: 500px;
+    padding: 20px;
+}
+
+.container-card-text {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+}
+
+.module {
+    width: 250px;
+    margin: 0 0 1em 0;
+    overflow: hidden;
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: fit-content;
+    padding: 0 15px 0 15px;
+}
+
+.text-formatted {
+    padding-left: 15px;
+}
+
+.text-date {
+    padding-top: 10px;
+}
+
+.cards-button {
+    padding-left: 15px;
+}
+
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+
 @media only screen and (max-width: 1000px) {
     body {
     background-image: url(../assets/Banner.png);

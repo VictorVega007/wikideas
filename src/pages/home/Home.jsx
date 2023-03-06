@@ -1,13 +1,18 @@
 import { Banner } from "../../components/Banner/Banner"
-import { Cards } from "../../components/Cards/Cards"
-
-
+// import { App } from "../../components/Cards/Cards"
+import { CardSwipeable } from "../../components/Cards/Cards"
+import { Footer } from "../../components/Footer/Footer"
+// import CardCarousel from "../../components/Cards/CardCarousel";
 
 export const Home = () => {
   return (
     <>
       <Banner />
-      <Cards />
+      <CardSwipeable />
+      {/* <CardCarousel /> */}
+
+      {/* <App /> */}
+      <Footer />
     </>
   )
 }
