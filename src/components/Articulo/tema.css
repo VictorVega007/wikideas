@@ -3,9 +3,8 @@
   padding: 60px 30px 100px 30px;
 }
 .css-vj1n65-MuiGrid-root img {
-  width: 92%;
-}
-
-.contenido {
-  display: flex;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
 }/*# sourceMappingURL=tema.css.map */

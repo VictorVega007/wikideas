@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { getTopics } from '../../shared/service';
 import Grid from '@mui/material/Grid'; // Grid version 1
-//import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
 import Item from '@mui/material/Grid';
-import { Typography, Box } from '@mui/material';
+import { Typography, Box, Card, CardMedia } from '@mui/material';
+//import { Card } from '@material-ui/core';
 import {} from './tema.css';
 
 export const Tema = () =>{
@@ -17,14 +17,13 @@ export const Tema = () =>{
             const response = await getTopics();
             const title = response[0].title;
             const description = response[0].description;
-            const image = response[0].image;
+            const url = response[0].image;
             setTitle(title);
             setDescription(description);
-            setUrl(image)
+            setUrl(url);
         };
         getTheme();
-      }, [title, description, url]);
-      
+      }, []);      
 
     return (
         <Grid container spacing={0.5}>
@@ -40,14 +39,14 @@ export const Tema = () =>{
                             {title}
                         </Typography>
                     </Item>
-                    <Box boxShadow={3} height="100vh">
+                    <Box boxShadow={3} height="130vh" width="100%" className="contenido">
                         <Item>
-                            <Typography variant="body1" overflow="visible" textAlign="justify">
+                            <Typography variant="body1" overflow="visible" textAlign="justify" marginBottom={10}>
                                 {description}
                             </Typography>
-                            <Item>
+                            <Card>
                                 <img src={url}></img>
-                            </Item>
+                            </Card>
                         </Item>
                     </Box>
                 </Box>
