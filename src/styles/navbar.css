@@ -1,8 +1,118 @@
 :root {
   --primary-color: #3C55BD;
-  --opacity-color: #f6f7f8;
+  --opacity-color: rgba(64, 174, 221, 0.2);
+  --height: 45%;
 }
 
 .css-9366w6-MuiPaper-root-MuiAppBar-root {
-  background: linear-gradient(to right, var(--opacity-color), var(--primary-color));
+  background: -webkit-gradient(linear, left top, right top, from(var(--opacity-color)), to(var(--primary-color)));
+}
+
+.css-vj1n65-MuiGrid-root {
+  height: var(--height);
+  text-align: left;
+  padding: 60px 500px 100px 70px;
+}
+
+.css-1t3jnaw-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator {
+  display: none !important;
+}
+
+.searchInputContainer {
+  height: 20px;
+}
+
+.css-1qqsdnr-MuiAutocomplete-root {
+  width: 500px;
+  background-color: white;
+}
+
+.css-ag7rrr-MuiTypography-root {
+  padding: 6px 0 6px 0;
+}
+
+.title {
+  opacity: 0;
+}
+
+.separator {
+  width: 100%;
+  border: 1.3px solid #83B1F6;
+}
+
+body {
+  background-image: url(../assets/8.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.static-img-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 300px;
+}
+
+.static-img {
+  height: 80%;
+}
+
+.cards-container {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  height: 500px;
+  padding: 20px;
+}
+
+.container-card-text {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+}
+
+.module {
+  width: 250px;
+  margin: 0 0 1em 0;
+  overflow: hidden;
+  text-align: justify;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 15px 0 15px;
+}
+
+.text-formatted {
+  padding-left: 15px;
+}
+
+.text-date {
+  padding-top: 10px;
+}
+
+.cards-button {
+  padding-left: 15px;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    background-image: url(../assets/Banner.png);
+    background-size: 80%;
+  }
 }/*# sourceMappingURL=navbar.css.map */

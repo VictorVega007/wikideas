@@ -1,60 +1,80 @@
-import { useData } from '../../hook/useData'
-import { useEffect, useState } from 'react';
+import { getTopicById } from '../../shared/service';
+import { useEffect, useState} from 'react';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Item from '@mui/material/Grid';
-import { Typography, Box, Card } from '@mui/material';
-import { CircularLoading } from "../../atoms/progress/CircularLoading";
+import { Typography, Box, Stack, Chip} from '@mui/material';
 import {} from './tema.css';
 
-export const Tema = (props) =>{
+export const Tema = () =>{
 
-    
-    function getRandomInt() {
-        let id = Math.floor(Math.random() * 15)
-        return id;
-    }
-    //const id = getRandomInt();
-    const id = 7;
-    const { data, setData } = useState({});
-
+    const [title, setTitle] = useState(null);
+    const [description, setDescription] = useState(null);
+    const [url, setUrl] = useState(null);
+    const [tags, setTags] = useState(null);
+    const [author, setAuthor] = useState(null);
+    const [date, setDate] = useState(null);
+ 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(`https://wikideas-adriana75.vercel.app/api/v1/topics/${id}`);
-            const datos = await response.json();
-            setData(datos);
-            console.log(data);
+        const getTheme = async () => {
+            const id = 7;
+            const response = await getTopicById(id);
+            const title = response.title;
+            const description = response.description;
+            const url = response.image;
+            const tags = response.tags;
+            const author = response.author;
+            const date = response.publishDate;
+            setTitle(title);
+            setDescription(description);
+            setUrl(url);
+            setTags(tags);
+            setAuthor(author);
+            setDate(date);
         };
-        fetchData();
+        getTheme();
     }, []);
 
     return (
         <div>
             <Grid container spacing={0.5} display = {'flex'}>
-                <Grid xs={8} className='contenido'>
+                <Grid xs={7} className='contenido' marginLeft={5}>
                     <Box display='flex' flexDirection='column'>
                         <Item>
                             <Typography variant="h3" noWrap overflow="visible">
-                                {}
+                                {title}
                             </Typography>
                         </Item>
-                        <Box boxShadow={3} height="100vh" width="100%" className="contenido">
+                        <Box boxShadow={3} width="100%" overflow="hidden">
                             <Item>
                                 <Typography variant="body1" overflow="visible" textAlign="justify" marginBottom={10}>
-                                    {}
+                                    {description}
                                 </Typography>
                             </Item>
+                            <Item>
+                                <Typography variant="body1" className='author'>
+                                    Publicada por: {author} el {date}
+                                </Typography>
+                                <Typography variant="body1" className='author'>
+                                    Modificada por: {author} 
+                                </Typography>
+                    </Item>
                         </Box>
                     </Box>
                 </Grid>
-                <Grid xs={4}>
+                <Grid xs={4} marginTop={13} marginLeft={10}>
                     <Item>
-                        <Card>
-                            <img src=""></img>
-                        </Card>
+                        <img src={url} className="img-theme"></img>
                     </Item>
-                    <Item>
-                        {}
+                    <Item className='container-tags'>
+                        {
+                            <Stack direction="row" spacing={4}>
+                                {tags?.map(e=>(
+                                    <Chip label={e}></Chip>
+                                ))}
+                            </Stack>
+                        }
                     </Item>
+                    
                 </Grid>
             </Grid>    
         </div>
