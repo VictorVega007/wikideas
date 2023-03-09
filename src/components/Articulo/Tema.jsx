@@ -2,7 +2,7 @@ import { getTopicById } from '../../shared/service';
 import { useEffect, useState} from 'react';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Item from '@mui/material/Grid';
-import { Typography, Box, Stack, Chip, Avatar, Icon} from '@mui/material';
+import { Typography, Box, Stack, Chip, List, ListItem, ListItemText, Divider} from '@mui/material';
 import {} from '@mui/icons-material/';
 import {} from './tema.css';
 
@@ -49,8 +49,32 @@ export const Tema = () =>{
     return (
         <div>
             <Grid container spacing={0.5} padding={5}>
-                <Grid xs={3}>Temas por Categoría</Grid>
-                <Grid xs={5.5}>
+                <Grid xs={3} marginRight={10}>
+                    <Box marginTop={5}>
+                        <ListItem button className='title-category' >
+                            <ListItemText primary={category} component="h2">
+                            </ListItemText>
+                        </ListItem>
+                        <List>
+                            <ListItem button>
+                                <ListItemText primary="Artículo 1" />
+                            </ListItem>
+                            <Divider />
+                            <ListItem button>
+                                <ListItemText primary="Artículo 2" />
+                            </ListItem>
+                            <Divider />
+                            <ListItem button>
+                                <ListItemText primary="Artículo 3" />
+                            </ListItem>
+                            <Divider light />
+                            <ListItem button>
+                                <ListItemText primary="Artículo 4" />
+                            </ListItem>
+                        </List>
+                    </Box>
+                </Grid>
+                <Grid xs={5}>
                     <Box display='flex' flexDirection='column'>
                         <Item>
                             <Typography variant="h4" noWrap overflow="visible" padding={5}>
