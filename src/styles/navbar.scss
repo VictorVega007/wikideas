@@ -112,6 +112,11 @@ body{
     -webkit-box-orient: vertical;
 }
 
+.links-decoration {
+    text-decoration: none;
+}
+
+
 @media only screen and (max-width: 1000px) {
     body {
     background-image: url(../assets/Banner.png);

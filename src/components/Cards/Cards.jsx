@@ -6,8 +6,6 @@ import { CircularLoading } from "../../atoms/progress/CircularLoading";
 export const CardSwipeable = () => {
   const { data, loading } = useData("https://wikideas-adriana75.vercel.app/api/v1/topics");
 
-  console.log(data)
-
   return (
     <div className="container-card-text">
       <Typography gutterBottom variant="h5" component="div" className="module">
