@@ -1,28 +1,27 @@
 .css-vj1n65-MuiGrid-root {
-  padding: 30px;
+  padding: 0px;
 }
 
 .img-theme {
-  background-size: cover;
   border: 1px solid #ddd;
   border-radius: 8px;
   height: 350px;
-  overflow: hidden;
   width: 400px;
 }
-.img-theme:hover {
-  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+.img-theme img {
+  background-size: cover;
+  border-radius: 8px;
+  height: 350px;
+  width: 400px;
+}
+.img-theme img:hover {
+  box-shadow: 0 0 2px 1px var(--primary-color);
 }
 
-.container-tags {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 40px;
+.contenido:hover {
+  box-shadow: 0 0 2px 1px var(--primary-color);
 }
 
-.author {
-  padding: 0 !important;
-  margin: 0 !important;
+.tags:hover {
+  background-color: var(--opacity-color);
 }/*# sourceMappingURL=tema.css.map */
