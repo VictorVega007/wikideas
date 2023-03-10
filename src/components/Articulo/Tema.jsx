@@ -21,7 +21,7 @@ export const Tema = () =>{
  
     useEffect(() => {
         const getTheme = async () => {
-            const id = 1;
+            const id = 10;
             const response = await getTopicById(id);
             const title = response.title;
             const description = response.description;
@@ -84,7 +84,7 @@ export const Tema = () =>{
                 <Grid xs={5}>
                     <Box display='flex' flexDirection='column'>
                         <Item>
-                            <Typography variant="h4" noWrap overflow="visible" padding={5} className="title-theme">
+                            <Typography variant="h4" fontSize={30}  fontWeight={800} noWrap overflow="visible" padding={5} className="title-theme">
                                 {title}
                             </Typography>
                         </Item>
