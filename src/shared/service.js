@@ -27,3 +27,14 @@ export const getTopicById = async (id) => {
     return error.message;
   }
 }
+
+export const getTopicsByCategory = async (category) => {
+  try {
+      const client = getClient(`http://localhost:8000/api/v1/topics/?category=${category}`)
+      const response = client.get();
+      const data = (await response).data;
+      return data;
+    } catch(error){
+      return error.message;
+    }
+}

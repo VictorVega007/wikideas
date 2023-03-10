@@ -1,4 +1,4 @@
-import { getTopicById } from '../../shared/service';
+import { getTopicById, getTopicsByCategory } from '../../shared/service';
 import { useEffect, useState} from 'react';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Item from '@mui/material/Grid';
@@ -16,10 +16,12 @@ export const Tema = () =>{
     const [date, setDate] = useState(null);
     const [dateUpdate, setDateUpdate] = useState(null);
     const [category, setCategory] = useState(null);
+    const [categoryID, setCategoryID] = useState(null);
+    const [titleTopic, setTitleTopic] = useState(null);
  
     useEffect(() => {
         const getTheme = async () => {
-            const id = 10;
+            const id = 1;
             const response = await getTopicById(id);
             const title = response.title;
             const description = response.description;
@@ -29,6 +31,8 @@ export const Tema = () =>{
             const date = response.publishDate;
             const updateDate = response.updateDate;
             const category = response.category.title;
+            const categoryID = response.category.id;
+            
             setTitle(title);
             setDescription(description);
             setUrl(url);
@@ -37,8 +41,20 @@ export const Tema = () =>{
             setDate(date);
             setDateUpdate(updateDate);
             setCategory(category);
+            setCategoryID(categoryID);
+            
         };
         getTheme();
+    }, []);
+
+    useEffect(()=>{
+        const getThemeByCategory = async () => {
+            const responseTopic = await getTopicsByCategory(categoryID);
+            const titleTopic = responseTopic;
+            console.log("responseTopic", titleTopic);
+            setTitleTopic(titleTopic);
+        };
+        getThemeByCategory();
     }, []);
 
     let dateUpd;
@@ -50,34 +66,25 @@ export const Tema = () =>{
         <div>
             <Grid container spacing={0.5} padding={5}>
                 <Grid xs={3} marginRight={10}>
-                    <Box marginTop={5}>
-                        <ListItem button className='title-category' >
-                            <ListItemText primary={category} component="h2">
-                            </ListItemText>
+                    <Box>
+                        <ListItem button className='title-theme' >
+                            <Typography variant="h4" noWrap overflow="visible" padding={5}>
+                                {category}
+                            </Typography>
                         </ListItem>
                         <List>
-                            <ListItem button>
-                                <ListItemText primary="Artículo 1" />
-                            </ListItem>
-                            <Divider />
-                            <ListItem button>
-                                <ListItemText primary="Artículo 2" />
-                            </ListItem>
-                            <Divider />
-                            <ListItem button>
-                                <ListItemText primary="Artículo 3" />
-                            </ListItem>
-                            <Divider light />
-                            <ListItem button>
-                                <ListItemText primary="Artículo 4" />
-                            </ListItem>
+                            {titleTopic?.map(e=>(
+                                <ListItem button divider>
+                                    <ListItemText primary={e.title}/>
+                                </ListItem>
+                            ))}
                         </List>
                     </Box>
                 </Grid>
                 <Grid xs={5}>
                     <Box display='flex' flexDirection='column'>
                         <Item>
-                            <Typography variant="h4" noWrap overflow="visible" padding={5}>
+                            <Typography variant="h4" noWrap overflow="visible" padding={5} className="title-theme">
                                 {title}
                             </Typography>
                         </Item>

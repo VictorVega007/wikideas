@@ -2,7 +2,8 @@
   padding: 0px;
 }
 
-.title-category {
+.title-theme {
+  cursor: none;
   text-transform: uppercase;
 }
 
