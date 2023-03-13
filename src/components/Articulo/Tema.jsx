@@ -2,7 +2,7 @@ import { getTopicById, getTopicsByCategory } from '../../shared/service';
 import { useEffect, useState} from 'react';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Item from '@mui/material/Grid';
-import { Typography, Box, Stack, Chip, List, ListItem, ListItemText, Divider} from '@mui/material';
+import { Typography, Box, Stack, Chip, List, ListItem, ListItemText} from '@mui/material';
 import {} from '@mui/icons-material/';
 import {} from './tema.css';
 
@@ -21,7 +21,7 @@ export const Tema = () =>{
  
     useEffect(() => {
         const getTheme = async () => {
-            const id = 10;
+            const id = 1;
             const response = await getTopicById(id);
             const title = response.title;
             const description = response.description;
@@ -42,20 +42,19 @@ export const Tema = () =>{
             setDateUpdate(updateDate);
             setCategory(category);
             setCategoryID(categoryID);
+
+            const getThemeByCategory = async () => {
+                const responseTopic = await getTopicsByCategory(categoryID);
+                const titleTopic = responseTopic;
+                console.log("responseTopic", titleTopic);
+                setTitleTopic(titleTopic);
+            };
+            getThemeByCategory();
             
         };
         getTheme();
     }, []);
 
-    useEffect(()=>{
-        const getThemeByCategory = async () => {
-            const responseTopic = await getTopicsByCategory(categoryID);
-            const titleTopic = responseTopic;
-            console.log("responseTopic", titleTopic);
-            setTitleTopic(titleTopic);
-        };
-        getThemeByCategory();
-    }, []);
 
     let dateUpd;
     if(dateUpdate != undefined){
