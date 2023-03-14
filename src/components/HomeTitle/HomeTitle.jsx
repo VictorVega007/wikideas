@@ -12,7 +12,7 @@ export const HomeTitle = () => {
   }, [timeline]);
 
   return (
-    <Grid className="container" >
+    <Grid className="container">
       <Typography variant="h1" className="title" color="secondary">
         WikIdeas
       </Typography>

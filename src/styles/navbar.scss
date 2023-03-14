@@ -11,10 +11,11 @@
     background: -webkit-gradient(linear, left top, right top, from(var(--opacity-color)), to(var(--primary-color)))
 }
 
-.css-vj1n65-MuiGrid-root{
+//MODIFICAR ESTE ESTILO
+.container{
     height: var(--height);
     text-align: left;
-    padding: 60px 500px 100px 70px;
+    padding: 60px 500px 100px 70px !important;
 }
 
 .css-1t3jnaw-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator{
