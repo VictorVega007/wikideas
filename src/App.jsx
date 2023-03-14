@@ -6,9 +6,12 @@ import { Tema } from "./components/Articulo/Tema"
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      {/*<Home />*/}
+      {/*
+        <Tema />
+      */}
       
-      <Tema />
+      <Home/>
+      
       
       
       
