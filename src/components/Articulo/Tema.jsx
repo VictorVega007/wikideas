@@ -3,11 +3,11 @@ import { useEffect, useState} from 'react';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Item from '@mui/material/Grid';
 import { Typography, Box, Stack, Chip, List, ListItem, ListItemText} from '@mui/material';
-import { Message } from '@mui/icons-material/';
 import {} from './tema.css';
 
 export const Tema = () =>{
 
+    let id = 10;
     const [title, setTitle] = useState(null);
     const [description, setDescription] = useState();
     const [url, setUrl] = useState(null);
@@ -18,11 +18,12 @@ export const Tema = () =>{
     const [category, setCategory] = useState(null);
     const [categoryID, setCategoryID] = useState(null);
     const [titleTopic, setTitleTopic] = useState(null);
- 
-    useEffect(() => {
+    const [ID, setID] = useState(id);
+
+    useEffect(()=>{
         const getTheme = async () => {
-            const id = 10;
-            const response = await getTopicById(id);
+            console.log(ID);
+            const response = await getTopicById(Number(ID));
             const title = response.title;
             const description = response.description;
             const url = response.image;
@@ -42,23 +43,23 @@ export const Tema = () =>{
             setDateUpdate(updateDate);
             setCategory(category);
             setCategoryID(categoryID);
-
-            const getThemeByCategory = async () => {
-                const responseTopic = await getTopicsByCategory(categoryID);
-                const titleTopic = responseTopic;
-                console.log("responseTopic", titleTopic);
-                setTitleTopic(titleTopic);
-            };
-            getThemeByCategory();
+            setID(ID);
+    
+        const getThemeByCategory = async () => {
+            const responseTopic = await getTopicsByCategory(categoryID);
+            const titleTopic = responseTopic;
+            setTitleTopic(titleTopic);
+        };
+        getThemeByCategory();
             
         };
         getTheme();
-    }, []);
+    }, [ID])
+    
 
     let arr = [];
-    const pintar = () =>{
+    const addDescription = () =>{
        try{
-
         let longitud = description.split('.').length; 
         let union = "";
         for(let i=0; i<longitud; i++){
@@ -74,7 +75,7 @@ export const Tema = () =>{
             return null;
        }
     }
-    pintar();
+    addDescription();
 
     let dateUpd;
     if(dateUpdate != undefined){
@@ -93,8 +94,11 @@ export const Tema = () =>{
                         </ListItem>
                         <List>
                             {titleTopic?.map(e=>(
-                                <ListItem button divider>
-                                    <ListItemText primary={e.title}/>
+                                <ListItem button divider >
+                                    <ListItemText primary={e.title} onClick={()=>{
+                                        setID(e.id)
+                                        console.log(ID)
+                                    }}/>
                                 </ListItem>
                             ))}
                         </List>
