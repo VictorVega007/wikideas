@@ -3,6 +3,7 @@ import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem
 import { Logo } from "../Icon/Logo";
 import { useState } from "react";
 import {} from '../../styles/navbar.scss';
+import { NavLink } from "react-router-dom";
 
 const pages = ['Categorias', 'Nosotros', 'Blog'];
 const settings = [ 'Perfil', 'Cuenta', 'Dashboard', 'Cerrar Sesión' ];
@@ -27,6 +28,8 @@ export const NavBar = (props) => {
   const handleCloseUserMenu = () => {
     setAnchorUser(null);
   };
+
+  const [categories, about, blog] = pages;
 
   return (
     <AppBar position="static"  className={color}>
@@ -100,7 +103,8 @@ export const NavBar = (props) => {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end'}}>
-            {pages.map((page) => (
+            {/* {pages.map((page) => (
+              
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -111,9 +115,45 @@ export const NavBar = (props) => {
                   width: '10%', 
                 }}
               >
-                {page}
+                {x}
               </Button>
-            ))}
+            ))} */}
+           
+            <NavLink to="/categories" className="links-decoration">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ 
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  width: '100%',
+                }}
+              >
+                {categories}
+              </Button>
+              </NavLink>
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ 
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  width: '10%', 
+                }}
+              >
+                {about}
+              </Button>
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ 
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  width: '10%', 
+                }}
+              >
+                {blog}
+              </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0, width: '5%' }}>
@@ -148,6 +188,10 @@ export const NavBar = (props) => {
 
         </Toolbar>
       </Container>
+
+      
     </AppBar>
+
+    
   )
 }
