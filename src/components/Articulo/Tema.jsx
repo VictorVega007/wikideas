@@ -22,7 +22,6 @@ export const Tema = () =>{
 
     useEffect(()=>{
         const getTheme = async () => {
-            console.log(ID);
             const response = await getTopicById(Number(ID));
             const title = response.title;
             const description = response.description;
@@ -97,7 +96,6 @@ export const Tema = () =>{
                                 <ListItem button divider >
                                     <ListItemText primary={e.title} onClick={()=>{
                                         setID(e.id)
-                                        console.log(ID)
                                     }}/>
                                 </ListItem>
                             ))}
