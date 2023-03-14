@@ -5,14 +5,18 @@ export const List = () => {
  
   let arr = [];
   const pintar = () =>{
-    let longitud = texto.split('.').length;
-    for(let i=0; i<= longitud; i++){
-        arr[i] = texto.split('.')[i];
-        console.log(arr[i]);
+    let longitud = texto.split('.').length; 
+    let union = "";
+    for(let i=0; i< longitud; i++){
+        if(i%3==2){
+            arr.push(union);
+            union="";
+        }else {
+            union += texto.split('.')[i];
+        }    
     }
   }
   pintar();
-  console.log(arr);
   return (
     <div>
       {arr?.map(e=>(

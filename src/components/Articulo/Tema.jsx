@@ -3,13 +3,13 @@ import { useEffect, useState} from 'react';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Item from '@mui/material/Grid';
 import { Typography, Box, Stack, Chip, List, ListItem, ListItemText} from '@mui/material';
-import {} from '@mui/icons-material/';
+import { Message } from '@mui/icons-material/';
 import {} from './tema.css';
 
 export const Tema = () =>{
 
     const [title, setTitle] = useState(null);
-    const [description, setDescription] = useState(null);
+    const [description, setDescription] = useState();
     const [url, setUrl] = useState(null);
     const [tags, setTags] = useState(null);
     const [author, setAuthor] = useState(null);
@@ -21,7 +21,7 @@ export const Tema = () =>{
  
     useEffect(() => {
         const getTheme = async () => {
-            const id = 1;
+            const id = 10;
             const response = await getTopicById(id);
             const title = response.title;
             const description = response.description;
@@ -55,6 +55,26 @@ export const Tema = () =>{
         getTheme();
     }, []);
 
+    let arr = [];
+    const pintar = () =>{
+       try{
+
+        let longitud = description.split('.').length; 
+        let union = "";
+        for(let i=0; i<longitud; i++){
+            if(i%3==2){
+                arr.push(union);
+                union="";
+            }else {
+                union += description.split('.')[i] + ".";
+            }    
+        }
+
+       }catch(err){
+            return null;
+       }
+    }
+    pintar();
 
     let dateUpd;
     if(dateUpdate != undefined){
@@ -90,7 +110,11 @@ export const Tema = () =>{
                         <Box boxShadow={3} width="100%" overflow="hidden" className="contenido">
                             <Item>
                                 <Typography variant="body1" overflow="visible" textAlign="justify" padding={5}>
-                                    {description}
+                                <div>
+                                    {arr?.map(e=>(
+                                        <p>{e}</p>
+                                    ))}
+                                </div>
                                 </Typography>
                             </Item>
                             <Item marginBottom={5} display={"flex"} alignItems={"center"} justifyContent={"center"}>
