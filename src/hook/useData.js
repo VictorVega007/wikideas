@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 export const useData = (url) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [data1, setData1] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -17,5 +18,13 @@ export const useData = (url) => {
       .finally(() => setLoading(false));
   }, [url]);
 
-  return { data, loading };
+  useEffect(() => {
+    setLoading(true);
+    fetch(url)
+      .then((response) => response.json())
+      .then((data1) => setData1(data1))
+      .finally(() => setLoading(false));
+  }, [url]);
+
+  return { data, loading, data1 };
 };

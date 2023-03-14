@@ -1,8 +1,8 @@
-import { Grid, Typography } from "@mui/material"
+import { Grid, Typography, CardContent } from "@mui/material"
 import { Footer } from "../../components/Footer/Footer";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { SearchCategory } from "../../components/SearchCategory/SearchCategory";
-
+import { useData } from "../../hook/useData";
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 
@@ -16,6 +16,10 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export const Category = () => {
+
+  const { data, loading } = useData("https://wikideas-adriana75.vercel.app/api/v1/topics");
+  const { data1 } = useData("https://wikideas-adriana75.vercel.app/api/v1/categories");
+
   return (
     <>
       <Grid container spacing={2}>
@@ -25,16 +29,23 @@ export const Category = () => {
         <Grid item xs={12} sx={{display: "flex", width: "100%", justifyContent: "center", height: "150px", alignItems: "center"}}>
           <SearchCategory />
         </Grid>
+        {
+        data1?.map(item => (
         <Grid item xs={12}>
-        <Typography textAlign="left">Categorias</Typography>
-        <hr />
+          <Item>{item.title}</Item>
+          </Grid>
+        ))}
+        {
+        data?.map(item => (
+        <CardContent style={{flexDirection: 'row', display: 'flex'}}>
+        <Grid item xs={4} paddingX={5}>
+          <Item>{item.title}</Item>
         </Grid>
         <Grid item xs={4}>
-          <Item>xs=4</Item>
+          <Item>{item.description}</Item>
         </Grid>
-        <Grid item xs={4}>
-          <Item>xs=4</Item>
-        </Grid>
+        </CardContent>
+        ))}
         <Grid item xs={12}>
           <Footer />
         </Grid>
