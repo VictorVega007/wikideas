@@ -79,11 +79,12 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 700px;
+    height: 100vh;
 }
 
 .module {
     width: 250px;
+    height: 95px;
     margin: 0 0 1em 0;
     overflow: hidden;
     text-align: justify;

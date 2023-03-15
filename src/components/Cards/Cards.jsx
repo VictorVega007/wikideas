@@ -7,6 +7,8 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Pagination from '@mui/material/Pagination';
 
+import {} from '../../styles/navbar.scss';
+
 
 export const CardSwipeable = () => {
   const [topics, setTopics] = useState([]);
@@ -40,7 +42,7 @@ export const CardSwipeable = () => {
 
   return (
     <div className="container-card-text">
-      <Typography gutterBottom variant="h5" component="div" className="module">
+      <Typography gutterBottom variant="h5" component="div" className="">
         Temas de la semana
       </Typography>
       <div className="cards-container">
