@@ -41,8 +41,8 @@ export const CardSwipeable = () => {
   };
 
   return (
-    <div className="container-card-text">
-      <Typography gutterBottom variant="h5" component="div" className="">
+    <>
+      <Typography gutterBottom variant="h5" component="div" className="container-card-text" sx={{marginBottom: 0}}>
         Temas de la semana
       </Typography>
       <div className="cards-container">
@@ -89,6 +89,6 @@ export const CardSwipeable = () => {
         style={{display: indexOfLastItem >= topics.length ? 'none' : 'inline', margin:0  }}>Siguiente</ArrowForwardIosIcon>
 
         </Stack>
-    </div>
+    </>
   );
 }
