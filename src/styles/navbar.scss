@@ -70,7 +70,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
-    height: 500px;
+    height: 700px;
     padding: 20px;
 }
 
@@ -80,11 +80,12 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 700px;
+    height: 60px;
 }
 
 .module {
     width: 250px;
+    height: 95px;
     margin: 0 0 1em 0;
     overflow: hidden;
     text-align: justify;
