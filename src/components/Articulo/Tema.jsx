@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 
 export const Tema = () =>{
 
-    const id = 1;
+    const { id } = useParams();
     const [title, setTitle] = useState(null);
     const [description, setDescription] = useState();
     const [url, setUrl] = useState(null);
