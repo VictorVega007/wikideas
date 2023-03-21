@@ -6,6 +6,8 @@ import { SearchCategory } from "../../components/SearchCategory/SearchCategory";
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { getTopicById, getTopicsByCategory } from '../../shared/service';
+import { useNavigate, useParams } from 'react-router-dom';
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -18,7 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export const Category = () => {
 
-  let id = 1;
+  const id = 3
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState();
   const [url, setUrl] = useState(null);
@@ -53,6 +55,8 @@ export const Category = () => {
       };
       getTheme();
   }, [ID])
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -89,7 +93,7 @@ export const Category = () => {
             {item.description}
             </Typography>
             <CardActions sx={{display: "flex", justifyContent: "flex-end", paddingRight: 3}}>
-          <Button size="small" color="secondary" onClick={()=>{  setID(item.id)}}>Leer más</Button>
+          <Button size="small" color="secondary" onClick={() => navigate(`/tema/${item.id}`)} >Leer más</Button>
         </CardActions>
             </Box>
             </Item>

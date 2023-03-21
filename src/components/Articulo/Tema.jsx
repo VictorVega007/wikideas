@@ -4,10 +4,12 @@ import Grid from '@mui/material/Grid'; // Grid version 1
 import Item from '@mui/material/Grid';
 import { Typography, Box, Stack, Chip, List, ListItem, ListItemText} from '@mui/material';
 import {} from './tema.css';
+import { useParams } from 'react-router-dom';
+
 
 export const Tema = () =>{
 
-    let id = 10;
+    const id = 1;
     const [title, setTitle] = useState(null);
     const [description, setDescription] = useState();
     const [url, setUrl] = useState(null);

@@ -5,7 +5,10 @@ import Stack from '@mui/material/Stack';
 import ButtonCard from './ButtonCard';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Pagination from '@mui/material/Pagination';
+import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import { useNavigate } from "react-router-dom";
 
 import {} from '../../styles/navbar.scss';
 
@@ -40,6 +43,8 @@ export const CardSwipeable = () => {
     setCurrentPage(currentPage + 1);
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
       <Typography gutterBottom variant="h5" component="div" className="container-card-text" sx={{marginBottom: 0}}>
@@ -69,7 +74,11 @@ export const CardSwipeable = () => {
         </CardContent>
         <CardActions sx={{display: "flex", justifyContent: "flex-end", paddingRight: 3}}>
           <Button size="small" color="secondary">Share</Button>
-              <ButtonCard />
+          <Box sx={{ '& > :not(style)': { m: 1 } }}>
+    <Fab color='secondary' size="medium" onClick={() => navigate(`/tema/${item.id}`)}>
+      <AutoStoriesIcon color='ffffff'/>
+    </Fab>
+    </Box>
         </CardActions>
       </Card>
         ))}
