@@ -9,7 +9,7 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import { useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 import { Formulario } from '../Formulario/Formulario';
-
+import { MicNone } from '@mui/icons-material';
 
 export const Tema = () =>{
 
@@ -156,13 +156,13 @@ export const Tema = () =>{
                             {`Categoría: ${category}`}   
                         </Typography>
                     </Item>
-                    <Item marginLeft={5}>
+                    <Item marginLeft={5} back>
                         <Typography variant="caption" display={"block"} paddingBottom={2}>
                         {`Publicado por: ${author} el ${new Date(date).toLocaleDateString("es-cl")}`}
                         </Typography>
                         {dateUpd}
                     </Item>
-                    <Modal background={'none'} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                    <Modal className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                         <Formulario />
                     </Modal>
                 <button onClick={openModal}>Editar artículo</button>
