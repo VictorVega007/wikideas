@@ -2,7 +2,7 @@ import { getTopicById, getTopicsByCategory } from '../../shared/service';
 import { useEffect, useState} from 'react';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Item from '@mui/material/Grid';
-import { Typography, Box, Stack, Chip, List, ListItem, ListItemText} from '@mui/material';
+import { Typography, Box, Stack, Chip, List, ListItem, ListItemText, Button} from '@mui/material';
 import {} from './tema.css';
 import { Footer } from "../../components/Footer/Footer";
 import { NavBar } from "../../components/NavBar/NavBar";
@@ -165,7 +165,9 @@ export const Tema = () =>{
                     <Modal className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                         <Formulario />
                     </Modal>
-                <button onClick={openModal}>Editar artículo</button>
+                    <Item display={"flex"} alignItems={"center"} justifyContent={"center"}>
+                        <Button color="secondary" onClick={openModal}>EDITAR</Button>
+                    </Item>
                  </Grid>
             </Grid>    
             <Grid item xs={12}>
