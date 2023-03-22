@@ -4,7 +4,7 @@ import { Home } from "./pages/home/Home";
 import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 import { Category } from "./pages/category/Category";
 import { Tema } from './components/Articulo/Tema'
-
+import { Formulario } from "./components/Formulario/Formulario";
 function App() {
   return (
     <BrowserRouter>

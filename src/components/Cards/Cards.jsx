@@ -52,7 +52,7 @@ export const CardSwipeable = () => {
       </Typography>
       <div className="cards-container">
         {currentTopics.map(item => (
-        <Card sx={{ width: "25%", marginX: 3 }} key={item.id}>
+         <Card sx={{ width: "25%", marginX: 3 }} key={item.id}>
         <CardMedia
           sx={{ height: 250 }}
           image={item.image}

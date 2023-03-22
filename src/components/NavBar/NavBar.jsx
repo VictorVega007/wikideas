@@ -1,14 +1,15 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Button } from "@mui/material";
 import { Logo } from "../Icon/Logo";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {} from '../../styles/navbar.scss';
 import { NavLink } from "react-router-dom";
 
-const pages = ['Categorias', 'Nosotros', 'Blog'];
+const pages = ['Categorias', 'Nosotros', 'Blog', 'Editar'];
 const settings = [ 'Perfil', 'Cuenta', 'Dashboard', 'Cerrar Sesión' ];
 
 export const NavBar = (props) => {
+
   const { color } = props;
   const [ anchorNav, setAnchorNav ] = useState(null);
   const [ anchorUser , setAnchorUser ] = useState(null);
@@ -29,7 +30,7 @@ export const NavBar = (props) => {
     setAnchorUser(null);
   };
 
-  const [categories, about, blog] = pages;
+  const [categories, about, blog, edit] = pages;
 
   return (
     <AppBar position="static"  className={color}>

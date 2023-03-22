@@ -4,10 +4,20 @@ import Grid from '@mui/material/Grid'; // Grid version 1
 import Item from '@mui/material/Grid';
 import { Typography, Box, Stack, Chip, List, ListItem, ListItemText} from '@mui/material';
 import {} from './tema.css';
+import { Footer } from "../../components/Footer/Footer";
+import { NavBar } from "../../components/NavBar/NavBar";
 import { useParams } from 'react-router-dom';
+import Modal from 'react-modal';
+import { Formulario } from '../Formulario/Formulario';
 
 
 export const Tema = () =>{
+
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  function openModal() {
+    setModalIsOpen(true);
+  }
 
     const { id } = useParams();
     const [title, setTitle] = useState(null);
@@ -85,6 +95,9 @@ export const Tema = () =>{
 
     return (
         <div>
+            <Grid item xs={12}>
+          <NavBar />
+        </Grid>
             <Grid container spacing={0.5} padding={5}>
                 <Grid xs={3} marginRight={10}>
                     <Box>
@@ -133,6 +146,7 @@ export const Tema = () =>{
                         </Box>
                     </Box>
                 </Grid>
+                
                 <Grid xs={2.5} marginTop={15}>
                     <Item marginLeft={5} className="img-theme">
                         <img src={url} ></img>
@@ -148,9 +162,15 @@ export const Tema = () =>{
                         </Typography>
                         {dateUpd}
                     </Item>
-                    
-                </Grid>
+                    <Modal background={'none'} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                        <Formulario />
+                    </Modal>
+                <button onClick={openModal}>Editar artículo</button>
+                 </Grid>
             </Grid>    
+            <Grid item xs={12}>
+          <Footer />
+        </Grid>
         </div>
         
     )
