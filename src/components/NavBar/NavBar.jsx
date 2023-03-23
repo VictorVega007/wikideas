@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import {} from '../../styles/navbar.scss';
 import { NavLink } from "react-router-dom";
 
-const pages = ['Categorias', 'Nosotros', 'Blog', 'Editar'];
+const pages = ['Categorias', 'Nosotros', 'Publicar'];
 const settings = [ 'Perfil', 'Cuenta', 'Dashboard', 'Cerrar Sesión' ];
 
 export const NavBar = (props) => {
