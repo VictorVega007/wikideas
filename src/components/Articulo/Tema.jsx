@@ -13,7 +13,7 @@ import { MicNone } from '@mui/icons-material';
 
 export const Tema = () =>{
 
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function openModal() {
     setModalIsOpen(true);

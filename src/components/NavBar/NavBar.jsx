@@ -1,18 +1,26 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Button } from "@mui/material";
 import { Logo } from "../Icon/Logo";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {} from '../../styles/navbar.scss';
 import { NavLink } from "react-router-dom";
+import Modal from 'react-modal';
+import { Formulario } from '../Formulario/Formulario';
 
 const pages = ['Categorias', 'Nosotros', 'Publicar'];
 const settings = [ 'Perfil', 'Cuenta', 'Dashboard', 'Cerrar Sesión' ];
+
 
 export const NavBar = (props) => {
 
   const { color } = props;
   const [ anchorNav, setAnchorNav ] = useState(null);
   const [ anchorUser , setAnchorUser ] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  function openModal() {
+    setModalIsOpen(true);
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorNav(event.currentTarget);
@@ -145,7 +153,7 @@ export const NavBar = (props) => {
                 {about}
               </Button>
               <Button
-                onClick={handleCloseNavMenu}
+                onClick={openModal}
                 sx={{ 
                   my: 2, 
                   color: 'white', 
@@ -189,6 +197,9 @@ export const NavBar = (props) => {
 
         </Toolbar>
       </Container>
+      <Modal className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+          <Formulario />
+      </Modal>
 
       
     </AppBar>
