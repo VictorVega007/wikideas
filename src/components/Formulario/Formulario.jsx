@@ -46,11 +46,14 @@ import Modal from 'react-modal';
       component="form"
       noValidate
       autoComplete="off"
+      sx={{
+        '& > :not(style)': { m: 1},
+      }}
     >
-      <TextField style={{backgroundColor:'ffffff'}} fullWidth id="outlined-basic" label="Title" variant="outlined" value={formulario.title} name='title' onChange={handleChange} />
+      <TextField fullWidth id="outlined-basic" label="Title" variant="outlined" value={formulario.title} name='title' onChange={handleChange} />
       
       <TextField
-      fullWidth 
+      fullWidth
           id="outlined-multiline-static"
           label="Description"
           multiline
