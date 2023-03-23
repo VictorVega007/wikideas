@@ -4,9 +4,23 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import {} from '../../styles/navbar.scss';
 // import { getTopics } from "../../shared/service";
 import { useData } from "../../hook/useData";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export const SearchInput = () => {
   const { data } = useData("https://wikideas-adriana75.vercel.app/api/v1/topics");
+  const [selectedValue, setSelectedValue] = useState(null);
+  const [found, setFound] = useState();
+
+  const navigate = useNavigate();
+
+
+  const handleOnChange = (event, value) => {
+    setSelectedValue(value)
+    setFound(data.find(element => element.title == value))
+  }
+
+  
 
   return (
     <>
@@ -14,6 +28,7 @@ export const SearchInput = () => {
       <Autocomplete
         id="search-input"
         options={!data ? [] : data.map(option => option.title)}
+        onChange={handleOnChange}
         renderInput={params => (
           <TextField 
             {...params}
@@ -29,7 +44,7 @@ export const SearchInput = () => {
     <Button
     size="large"
     aria-label="search"
-    onClick={() => {}}>{<SearchOutlinedIcon/>}</Button>
+    onClick={() => navigate(`/tema/${found.id}`)}>{<SearchOutlinedIcon/>}</Button>
     </>
   )
 };
