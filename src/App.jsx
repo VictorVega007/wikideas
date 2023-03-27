@@ -13,7 +13,7 @@ function App() {
 
       <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/categories" element={<Category />} />
+          <Route path="/categories/:id" element={<Category />} />
           <Route path="/tema/:id" element={<Tema />}></Route>
 
           <Route path="/*" element={<Navigate to="/home" replace />} />

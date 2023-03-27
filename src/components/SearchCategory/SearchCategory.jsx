@@ -4,14 +4,21 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import {} from '../../styles/navbar.scss';
 // import { getTopics } from "../../shared/service";
 import { useData } from "../../hook/useData";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export const SearchCategory = () => {
   const { data } = useData("https://wikideas-adriana75.vercel.app/api/v1/categories");
+  const [selectedValue, setSelectedValue] = useState(null);
+  const [found, setFound] = useState();
+  const navigate = useNavigate();
 
-  const {category } = useData("https://wikideas-adriana75.vercel.app/api/v1/topics");
-
-  console.log(category);
-
+  const handleOnChange = (event, value) => {
+    setSelectedValue(value)
+    console.log(selectedValue);
+    setFound(data.find(element => element.title == value))
+    console.log(found);
+  }
 
   return (
     <>
@@ -19,6 +26,7 @@ export const SearchCategory = () => {
       <Autocomplete
         id="search-input"
         options={!data ? [] : data.map(item => item.title)}
+        onChange={handleOnChange}
         renderInput={params => (
           <TextField 
             {...params}
@@ -34,7 +42,7 @@ export const SearchCategory = () => {
     <Button
     size="large"
     aria-label="search"
-    onClick={() => {}}>{<SearchOutlinedIcon/>}</Button>
+    onClick={() => navigate(`/categories/${found.id}`)}>{<SearchOutlinedIcon/>}</Button>
     </>
   )
 };
