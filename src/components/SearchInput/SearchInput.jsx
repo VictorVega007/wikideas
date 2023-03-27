@@ -30,7 +30,7 @@ export const SearchInput = () => {
         options={!data ? [] : data.map(option => option.title)}
         onChange={handleOnChange}
         renderInput={params => (
-          <TextField zIndex={0}
+          <TextField
             {...params}
             label="Búsqueda de Tema"
             InputProps={{

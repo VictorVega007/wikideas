@@ -14,17 +14,19 @@ import { getCategories, enviarDatos } from "../../shared/service";
 export const Formulario = () => {
   const [categoria, setCategoria] = useState('');
   const [categories, setCategories] = useState()
+  const [found, setFound] = useState();
 
   useEffect(() => {
     const getCategoriesTitle = async() =>{
       const response = await getCategories();
       const data = response;
       setCategories(data)
+      console.log(categories);
     };
     getCategoriesTitle();
   }, [])
-  
 
+  
   const [formulario, setFormulario] = useState({
     title: "",
     description: "",
@@ -35,14 +37,24 @@ export const Formulario = () => {
   });
 
   async function handleChangeForm(e){
+    //const value = e.target.type==='select-one' ? e.target.selectedOptions[0].value : e.target.value;
+    let value;
+    if(e.target.type==='select-one'){
+      const cat = e.target.selectedOptions[0].value;
+      const idCat = categories.map(e=> e.title == cat)
+      value = idCat
+    }else value = e.target.value
+
+    console.log(value);
     setFormulario({
       ...formulario,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     });
   };
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    console.log(formulario);
     const respuesta = await enviarDatos(formulario);
     console.log(respuesta);
   }
@@ -64,18 +76,12 @@ export const Formulario = () => {
     <FormControl fullWidth sx={style} id="formulario" onSubmit={handleSubmit}>
       <Box component="form" autoComplete="off">
         
-        <InputLabel id="demo-simple-select-standard-label" >Categoría</InputLabel>
-          <Select
-            labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard"
-            value={1}
-            label="Categoría"
-            onChange={handleChangeForm}
-          > 
-            {categories?.map(e=>
-              <MenuItem value={e.id}>{e.title}</MenuItem>
-            )}
-          </Select>        
+        <InputLabel id="inputCategories" >Categoría</InputLabel>
+        <Select name="category" value={formulario.category} onChange={handleChangeForm} >
+          {categories?.map(e => (
+            <MenuItem key={e.title} value={e.title}>{e.title}</MenuItem>
+          ))}
+        </Select>    
 
         <TextField
           style={{ backgroundColor: "ffffff" }}
