@@ -9,10 +9,9 @@ import {
   Fab,
 } from "@mui/material";
 import NavigationIcon from "@mui/icons-material/Navigation";
-import { getCategories } from "../../shared/service";
+import { getCategories, enviarDatos } from "../../shared/service";
 
 export const Formulario = () => {
-  const [cat, setCat] = useState('');
   const [categoria, setCategoria] = useState('');
   const [categories, setCategories] = useState()
 
@@ -29,36 +28,24 @@ export const Formulario = () => {
   const [formulario, setFormulario] = useState({
     title: "",
     description: "",
-    category:1,
+    category: "",
     author: "",
     image: "",
     tags: "",
   });
 
-  const handleChangeForm = (e) => {
-    const { name, value } = e.target;
+  async function handleChangeForm(e){
     setFormulario({
       ...formulario,
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
   };
 
-  async function handleSubmit(event){
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const response = await fetch('http://localhost:8000/api/v1/topics', {
-      method: 'POST',
-      body: formulario
-    });
-    const data = await response.json();
-    console.log(data);
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    const respuesta = await enviarDatos(formulario);
+    console.log(respuesta);
   }
-
-  const handleChange = (event) => {
-    setCategoria(event.target.value);
-    console.log(categoria);
-  };
-
   
 
    const style = {
@@ -81,15 +68,13 @@ export const Formulario = () => {
           <Select
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard"
-            value={categoria}
+            value={1}
             label="Categoría"
-            onChange={handleChange}
+            onChange={handleChangeForm}
           > 
-          <div>
             {categories?.map(e=>
               <MenuItem value={e.id}>{e.title}</MenuItem>
             )}
-          </div>
           </Select>        
 
         <TextField

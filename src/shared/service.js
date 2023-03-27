@@ -61,3 +61,15 @@ export const getCategories = async () => {
     }
 }
 
+export const enviarDatos = async (datos) => {
+  const respuesta = await fetch('http://localhost:8000/api/v1/topics/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(datos)
+  });
+  const respuestaJson = await respuesta.json();
+  return respuestaJson;
+};
+
