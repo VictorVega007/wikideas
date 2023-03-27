@@ -11,10 +11,8 @@ import {
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { getCategories, enviarDatos } from "../../shared/service";
 
-export const Formulario = () => {
-  const [categoria, setCategoria] = useState('');
+export const FormularioAlta = () => {
   const [categories, setCategories] = useState()
-  const [found, setFound] = useState();
 
   useEffect(() => {
     const getCategoriesTitle = async() =>{
@@ -37,15 +35,7 @@ export const Formulario = () => {
   });
 
   async function handleChangeForm(e){
-    //const value = e.target.type==='select-one' ? e.target.selectedOptions[0].value : e.target.value;
-    let value;
-    if(e.target.type==='select-one'){
-      const cat = e.target.selectedOptions[0].value;
-      const idCat = categories.map(e=> e.title == cat)
-      value = idCat
-    }else value = e.target.value
-
-    console.log(value);
+    const value = e.target.type==='select-one' ? e.target.selectedOptions[0].value : e.target.value;
     setFormulario({
       ...formulario,
       [e.target.name]: value,
@@ -54,6 +44,7 @@ export const Formulario = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    formulario.tags = formulario.tags.split(' ')
     console.log(formulario);
     const respuesta = await enviarDatos(formulario);
     console.log(respuesta);
@@ -77,9 +68,9 @@ export const Formulario = () => {
       <Box component="form" autoComplete="off">
         
         <InputLabel id="inputCategories" >Categoría</InputLabel>
-        <Select name="category" value={formulario.category} onChange={handleChangeForm} >
+        <Select name="category" value={formulario.category} onChange={handleChangeForm} fullWidth>
           {categories?.map(e => (
-            <MenuItem key={e.title} value={e.title}>{e.title}</MenuItem>
+            <MenuItem key={e.id} value={e.id}>{e.title}</MenuItem>
           ))}
         </Select>    
 
@@ -107,19 +98,30 @@ export const Formulario = () => {
         <TextField
           fullWidth
           id="outlined-basic"
-          label="Author"
+          label="Image"
           variant="outlined"
-          value={formulario.author}
-          name="author"
+          value={formulario.image}
+          name="image"
+          onChange={handleChangeForm}
+        />
+        <TextField
+          fullWidth
+          id="outlined-multiline-flexible"
+          label="Tags"
+          variant="outlined"
+          value={formulario.tags}
+          name="tags"
+          multiline
+          maxRows={3}
           onChange={handleChangeForm}
         />
         <TextField
           fullWidth
           id="outlined-basic"
-          label="Tags"
+          label="Author"
           variant="outlined"
-          value={formulario.tags}
-          name="tags"
+          value={formulario.author}
+          name="author"
           onChange={handleChangeForm}
         />
         <Fab variant="extended" type="submit">
