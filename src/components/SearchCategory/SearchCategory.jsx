@@ -26,7 +26,7 @@ export const SearchCategory = () => {
 
   return (
     <>
-    <Stack spacing={2}>
+    <Stack spacing={2} zIndex={0}>
       <Autocomplete
         id="search-input"
         options={!data ? [] : data.map(item => item.title)}
