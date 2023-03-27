@@ -1,26 +1,27 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Button } from "@mui/material";
 import { Logo } from "../Icon/Logo";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {} from '../../styles/navbar.scss';
 import { NavLink } from "react-router-dom";
 import Modal from 'react-modal';
-import { Formulario } from '../Formulario/Formulario';
+import { FormularioAlta } from '../Formulario/Formulario';
 
 const pages = ['Categorias', 'Nosotros', 'Publicar'];
 const settings = [ 'Perfil', 'Cuenta', 'Dashboard', 'Cerrar Sesión' ];
 
+
 export const NavBar = (props) => {
 
+
+  const { color } = props;
+  const [ anchorNav, setAnchorNav ] = useState(null);
+  const [ anchorUser , setAnchorUser ] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function openModal() {
     setModalIsOpen(true);
   }
-
-  const { color } = props;
-  const [ anchorNav, setAnchorNav ] = useState(null);
-  const [ anchorUser , setAnchorUser ] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorNav(event.currentTarget);
@@ -128,7 +129,7 @@ export const NavBar = (props) => {
               </Button>
             ))} */}
            
-            <NavLink to="/categories" className="links-decoration">
+            <NavLink to="/categories/1" className="links-decoration">
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ 
@@ -153,7 +154,7 @@ export const NavBar = (props) => {
                 {about}
               </Button>
               <Modal  className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                        <Formulario />
+                        <FormularioAlta />
                </Modal>
               <Button
                 onClick={openModal}
@@ -200,6 +201,9 @@ export const NavBar = (props) => {
 
         </Toolbar>
       </Container>
+      <Modal className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+          <FormularioAlta />
+      </Modal>
 
       
     </AppBar>

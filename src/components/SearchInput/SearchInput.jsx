@@ -24,13 +24,13 @@ export const SearchInput = () => {
 
   return (
     <>
-    <Stack spacing={2}>
+    <Stack spacing={2} zIndex={0}>
       <Autocomplete
         id="search-input"
         options={!data ? [] : data.map(option => option.title)}
         onChange={handleOnChange}
         renderInput={params => (
-          <TextField 
+          <TextField
             {...params}
             label="Búsqueda de Tema"
             InputProps={{

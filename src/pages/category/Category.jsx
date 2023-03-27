@@ -5,8 +5,8 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import { SearchCategory } from "../../components/SearchCategory/SearchCategory";
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import { getTopicById, getTopicsByCategory } from '../../shared/service';
-import { useNavigate, useParams } from 'react-router-dom';
+import { getCategory, getTopicsByCategory } from '../../shared/service';
+import { useNavigate, useParams} from 'react-router-dom';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -20,43 +20,27 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export const Category = () => {
 
-  const id = 3
-  const [title, setTitle] = useState(null);
-  const [description, setDescription] = useState();
-  const [url, setUrl] = useState(null);
+  const { id } = useParams();
+  //const  id  = 2
   const [category, setCategory] = useState(null);
   const [titleTopic, setTitleTopic] = useState(null);
   const [ID, setID] = useState(id);
+  const [debeRecargar, setDebeRecargar] = useState(false);
+  const navigate = useNavigate();
+  
 
   useEffect(()=>{
-
-      const getTheme = async () => {
-          const response = await getTopicById(Number(ID));
-          const title = response.title;
-          const description = response.description;
-          const url = response.image;
-          const category = response.category.title;
-          const categoryID = response.category.id;
-          
-          setTitle(title);
-          setDescription(description);
-          setUrl(url);
-          setCategory(category);
-          setID(ID);
-  
       const getThemeByCategory = async () => {
-          const responseTopic = await getTopicsByCategory(categoryID);
-          const titleTopic = responseTopic;
-          setTitleTopic(titleTopic);
-
+        const category = await getCategory(Number(ID))
+        const responseTopic = await getTopicsByCategory(Number(ID));
+        const titleTopic = responseTopic;
+        const idCategory = category
+        setCategory(idCategory.title);
+        setTitleTopic(titleTopic);
       };
       getThemeByCategory();
-          
-      };
-      getTheme();
   }, [ID])
-
-  const navigate = useNavigate();
+  
 
   return (
     <>
@@ -65,7 +49,7 @@ export const Category = () => {
           <NavBar />
         </Grid>
         <Grid item xs={12} sx={{display: "flex", width: "100%", justifyContent: "center", height: "150px", alignItems: "center"}}>
-          <SearchCategory />
+          <SearchCategory/>
         </Grid>
         <Grid item xs={12} sx={{paddingLeft:25, display: "flex", width: "100%", justifyContent: 'center' , alignItems: "center", textTransform: 'uppercase', fontSize: 20, marginY: 10}}>
           <Item height={'100%'}>

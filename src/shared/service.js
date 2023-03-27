@@ -38,3 +38,38 @@ export const getTopicsByCategory = async (category) => {
       return error.message;
     }
 }
+
+export const getCategory = async (id) => {
+  try {
+      const client = getClient(`http://localhost:8000/api/v1/categories/${id}`)
+      const response = client.get();
+      const data = (await response).data;
+      return data;
+    } catch(error){
+      return error.message;
+    }
+}
+
+export const getCategories = async () => {
+  try {
+      const client = getClient(`http://localhost:8000/api/v1/categories`)
+      const response = client.get();
+      const data = (await response).data;
+      return data;
+    } catch(error){
+      return error.message;
+    }
+}
+
+export const enviarDatos = async (datos) => {
+  const respuesta = await fetch('http://localhost:8000/api/v1/topics/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(datos)
+  });
+  const respuestaJson = await respuesta.json();
+  return respuestaJson;
+};
+

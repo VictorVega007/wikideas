@@ -5,6 +5,7 @@ import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 import { Category } from "./pages/category/Category";
 import { Tema } from './components/Articulo/Tema'
 import { Formulario } from "./components/Formulario/Formulario";
+import { SearchCategory } from "./components/SearchCategory/SearchCategory";
 function App() {
   return (
     <BrowserRouter>
@@ -13,7 +14,9 @@ function App() {
 
       <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/categories" element={<Category />} />
+          {/*<Category setDebeRecargar={setDebeRecargar}></Category>
+          <Route path="/categories/:id" component={SearchCategory} />*/}          
+          <Route path="/categories/:id" element={<Category />} />
           <Route path="/tema/:id" element={<Tema />}></Route>
 
           <Route path="/*" element={<Navigate to="/home" replace />} />
