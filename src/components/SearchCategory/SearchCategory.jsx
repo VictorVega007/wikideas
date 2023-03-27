@@ -16,6 +16,11 @@ export const SearchCategory = () => {
   const handleOnChange = (event, value) => {
     setSelectedValue(value)
     setFound(data.find(element => element.title == value))
+
+  }
+
+  const handleClick = () => {
+    navigate(`/categories/${found.id}`)
   }
 
 
@@ -41,7 +46,7 @@ export const SearchCategory = () => {
     <Button
     size="large"
     aria-label="search"
-    onClick={() => navigate(`/categories/${found.id}`)}>{<SearchOutlinedIcon/>}</Button>
+    onClick={handleClick}>{<SearchOutlinedIcon/>}</Button>
     </>
   )
 };

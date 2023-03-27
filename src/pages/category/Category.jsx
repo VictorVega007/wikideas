@@ -6,7 +6,7 @@ import { SearchCategory } from "../../components/SearchCategory/SearchCategory";
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { getCategory, getTopicsByCategory } from '../../shared/service';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams} from 'react-router-dom';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -25,6 +25,9 @@ export const Category = () => {
   const [category, setCategory] = useState(null);
   const [titleTopic, setTitleTopic] = useState(null);
   const [ID, setID] = useState(id);
+  const [debeRecargar, setDebeRecargar] = useState(false);
+  const navigate = useNavigate();
+  
 
   useEffect(()=>{
       const getThemeByCategory = async () => {
@@ -35,13 +38,9 @@ export const Category = () => {
         setCategory(idCategory.title);
         setTitleTopic(titleTopic);
       };
-      
       getThemeByCategory();
-      
-  }, [])
-
-  const navigate = useNavigate();
- 
+  }, [ID])
+  
 
   return (
     <>
@@ -50,7 +49,7 @@ export const Category = () => {
           <NavBar />
         </Grid>
         <Grid item xs={12} sx={{display: "flex", width: "100%", justifyContent: "center", height: "150px", alignItems: "center"}}>
-          <SearchCategory />
+          <SearchCategory/>
         </Grid>
         <Grid item xs={12} sx={{paddingLeft:25, display: "flex", width: "100%", justifyContent: 'center' , alignItems: "center", textTransform: 'uppercase', fontSize: 20, marginY: 10}}>
           <Item height={'100%'}>
