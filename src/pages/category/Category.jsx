@@ -27,7 +27,6 @@ export const Category = () => {
   const [ID, setID] = useState(id);
 
   useEffect(()=>{
-
       const getThemeByCategory = async () => {
         const category = await getCategory(Number(ID))
         const responseTopic = await getTopicsByCategory(Number(ID));
@@ -35,12 +34,14 @@ export const Category = () => {
         const idCategory = category
         setCategory(idCategory.title);
         setTitleTopic(titleTopic);
-
       };
+      
       getThemeByCategory();
-  }, [ID])
+      
+  }, [])
 
   const navigate = useNavigate();
+ 
 
   return (
     <>

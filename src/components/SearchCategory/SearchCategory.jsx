@@ -15,10 +15,9 @@ export const SearchCategory = () => {
 
   const handleOnChange = (event, value) => {
     setSelectedValue(value)
-    console.log(selectedValue);
     setFound(data.find(element => element.title == value))
-    console.log(found);
   }
+
 
   return (
     <>

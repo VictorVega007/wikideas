@@ -128,7 +128,7 @@ export const NavBar = (props) => {
               </Button>
             ))} */}
            
-            <NavLink to="/categories/" className="links-decoration">
+            <NavLink to="/categories/:id" className="links-decoration">
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ 
