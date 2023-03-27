@@ -90,7 +90,7 @@ export const CardSwipeable = () => {
 
          <Button color="secondary" onClick={handlePrevClick} style={{display: currentPage === 1 ? 'none' : 'inline', margin:0  }}>Anterior</Button>
 
-        <Card><Typography style={{margin:15}}>{currentPage}</Typography></Card>
+        <Card style={{margin:0}}><Typography style={{margin:15}}>{currentPage}</Typography></Card>
 
         <Button color="secondary" onClick={handleNextClick} style={{display: indexOfLastItem >= topics.length ? 'none' : 'inline', margin:0 }}>Siguiente</Button>
 
