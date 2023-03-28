@@ -142,19 +142,7 @@ export const NavBar = (props) => {
                 {categories}
               </Button>
               </NavLink>
-              <NavLink to="/nosotros" className="links-decoration">
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ 
-                  my: 2, 
-                  color: 'white', 
-                  display: 'block', 
-                  width: '100%', 
-                }}
-              >
-                {about}
-              </Button>
-              </NavLink>
+
               <Modal  className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                         <FormularioAlta />
                </Modal>
@@ -169,6 +157,20 @@ export const NavBar = (props) => {
               >
                 {blog}
               </Button>
+              
+              <NavLink to="/nosotros" className="links-decoration">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ 
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  width: '100%', 
+                }}
+              >
+                {about}
+              </Button>
+              </NavLink>
           </Box>
 
           <Box sx={{ flexGrow: 0, width: '5%' }}>
