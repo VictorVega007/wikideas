@@ -14,17 +14,18 @@ import { getTopicById, enviarDatos } from "../../shared/service";
 
 export const FormEdit = () => {
     const { id } = useParams();
-  const [categories, setCategories] = useState()
+    const [ID, setID] = useState(id);
+  const [topic, setTopic] = useState()
 
   useEffect(() => {
     const getTopic = async() =>{
-      const response = await getTopicById();
+      const response = await getTopicById(Number(ID));
       const data = response;
-      setCategories(data)
-      console.log(categories);
+      setTopic(data)
+      console.log(topic);
     };
     getTopic();
-  }, [])
+  }, [ID])
 
   
   const [formulario, setFormulario] = useState({
@@ -67,6 +68,7 @@ export const FormEdit = () => {
 
   return (
     <FormControl fullWidth sx={style} id="formulario" onSubmit={handleSubmit}>
+      {topic?.map(e => (
       <Box component="form" autoComplete="off" sx={{
           '& > :not(style)': { m: 0.5},
         }}>
@@ -77,7 +79,7 @@ export const FormEdit = () => {
           id="outlined-basic"
           label="Title"
           variant="outlined"
-          value={formulario.title}
+          value={e.title}
           name="title"
           onChange={handleChangeForm}
         />
@@ -93,9 +95,9 @@ export const FormEdit = () => {
     label="Categoria"
     onChange={handleChangeForm}
   >
-    {categories?.map(e => (
-            <MenuItem key={e.id} value={e.id}>{e.title}</MenuItem>
-          ))}
+    
+            <MenuItem key value></MenuItem>
+          
 </Select>
       </FormControl>
 
@@ -145,6 +147,7 @@ export const FormEdit = () => {
         </Fab>
         </Box>
       </Box>
+      ))}
     </FormControl>
   );
 };
