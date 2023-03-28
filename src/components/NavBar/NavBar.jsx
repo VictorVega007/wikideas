@@ -142,17 +142,19 @@ export const NavBar = (props) => {
                 {categories}
               </Button>
               </NavLink>
+              <NavLink to="/nosotros" className="links-decoration">
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ 
                   my: 2, 
                   color: 'white', 
                   display: 'block', 
-                  width: '10%', 
+                  width: '100%', 
                 }}
               >
                 {about}
               </Button>
+              </NavLink>
               <Modal  className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                         <FormularioAlta />
                </Modal>

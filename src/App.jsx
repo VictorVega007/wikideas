@@ -6,6 +6,8 @@ import { Category } from "./pages/category/Category";
 import { Tema } from './components/Articulo/Tema'
 import { Formulario } from "./components/Formulario/Formulario";
 import { SearchCategory } from "./components/SearchCategory/SearchCategory";
+import { Nosotros } from "./pages/nosotros/Nosotros";
+
 function App() {
   return (
     <BrowserRouter>
@@ -15,7 +17,8 @@ function App() {
       <Routes>
           <Route path="/home" element={<Home />} />
           {/*<Category setDebeRecargar={setDebeRecargar}></Category>
-          <Route path="/categories/:id" component={SearchCategory} />*/}          
+          <Route path="/categories/:id" component={SearchCategory} />*/}
+          <Route path="/nosotros" element={<Nosotros />} />          
           <Route path="/categories/:id" element={<Category />} />
           <Route path="/tema/:id" element={<Tema />}></Route>
 
