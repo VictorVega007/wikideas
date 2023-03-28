@@ -13,16 +13,36 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import { getTopicById, enviarDatos } from "../../shared/service";
 
 export const FormEdit = () => {
-    const { id } = useParams();
-    const [ID, setID] = useState(id);
-  const [topic, setTopic] = useState()
+  const { id } = useParams();
+  const [title, setTitle] = useState(null);
+  const [description, setDescription] = useState();
+  const [url, setUrl] = useState(null);
+  const [tags, setTags] = useState(null);
+  const [author, setAuthor] = useState(null);
+  const [category, setCategory] = useState(null);
+  const [ID, setID] = useState(id);
+  const [categoryID, setCategoryID] = useState(null);
 
   useEffect(() => {
     const getTopic = async() =>{
       const response = await getTopicById(Number(ID));
-      const data = response;
-      setTopic(data)
-      console.log(topic);
+            const title = response.title;
+            const description = response.description;
+            const url = response.image;
+            const tags = response.tags;
+            const author = response.author;
+            const category = response.category.title;
+            const categoryID = response.category.id;
+            
+            setTitle(title);
+            setDescription(description);
+            setUrl(url);
+            setTags(tags);
+            setAuthor(author);
+            setCategory(category);
+            setID(ID);
+            setCategoryID(categoryID);
+
     };
     getTopic();
   }, [ID])
@@ -68,7 +88,6 @@ export const FormEdit = () => {
 
   return (
     <FormControl fullWidth sx={style} id="formulario" onSubmit={handleSubmit}>
-      {topic?.map(e => (
       <Box component="form" autoComplete="off" sx={{
           '& > :not(style)': { m: 0.5},
         }}>
@@ -79,7 +98,7 @@ export const FormEdit = () => {
           id="outlined-basic"
           label="Title"
           variant="outlined"
-          value={e.title}
+          value={title}
           name="title"
           onChange={handleChangeForm}
         />
@@ -91,12 +110,12 @@ export const FormEdit = () => {
     labelId="demo-simple-select-label"
     id="demo-simple-select"
     name="category" 
-    value={formulario.category}
+    value={category}
     label="Categoria"
     onChange={handleChangeForm}
   >
     
-            <MenuItem key value></MenuItem>
+  <MenuItem key={ID} value={category}></MenuItem>
           
 </Select>
       </FormControl>
@@ -107,7 +126,7 @@ export const FormEdit = () => {
           label="Description"
           multiline
           rows={10}
-          value={formulario.description}
+          value={description}
           name="description"
           onChange={handleChangeForm}
         />
@@ -116,7 +135,7 @@ export const FormEdit = () => {
           id="outlined-basic"
           label="Image"
           variant="outlined"
-          value={formulario.image}
+          value={url}
           name="image"
           onChange={handleChangeForm}
         />
@@ -125,7 +144,7 @@ export const FormEdit = () => {
           id="outlined-multiline-flexible"
           label="Tags"
           variant="outlined"
-          value={formulario.tags}
+          value={tags}
           name="tags"
           multiline
           maxRows={3}
@@ -136,7 +155,7 @@ export const FormEdit = () => {
           id="outlined-basic"
           label="Author"
           variant="outlined"
-          value={formulario.author}
+          value={author}
           name="author"
           onChange={handleChangeForm}
         />
@@ -147,7 +166,6 @@ export const FormEdit = () => {
         </Fab>
         </Box>
       </Box>
-      ))}
     </FormControl>
   );
 };
