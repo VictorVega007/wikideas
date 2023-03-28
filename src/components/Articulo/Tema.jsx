@@ -8,6 +8,9 @@ import { Footer } from "../../components/Footer/Footer";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { useParams } from 'react-router-dom';
 import Modal from 'react-modal';
+import {FormEdit} from '../Formulario/FormEdit'
+
+
 export const Tema = () =>{
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -160,7 +163,7 @@ export const Tema = () =>{
                         {dateUpd}
                     </Item>
                     <Modal className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                        <p>Aquí va el form de editar</p>
+                    <FormEdit />
                     </Modal>
                     <Item display={"flex"} alignItems={"center"} justifyContent={"center"}>
                         <Button color="secondary" onClick={openModal}>EDITAR</Button>
