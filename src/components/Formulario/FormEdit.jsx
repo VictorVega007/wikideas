@@ -112,10 +112,7 @@ export const FormEdit = () => {
           name="title"
           onChange={handleChangeForm}
         />
-
-<FormControl fullWidth>
-      </FormControl>
-
+        
         <TextField
           fullWidth
           id="outlined-multiline-static"
