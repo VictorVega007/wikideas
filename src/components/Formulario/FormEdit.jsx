@@ -91,7 +91,7 @@ export const FormEdit = () => {
       <Box component="form" autoComplete="off" sx={{
           '& > :not(style)': { m: 0.5},
         }}>
-        <InputLabel id="demo-simple-select-label">Categoria</InputLabel>
+        <InputLabel id="demo-simple-select-label"  fullWidth>Categoría</InputLabel>
         <TextField
           style={{ backgroundColor: "ffffff" }}
           fullWidth
@@ -112,7 +112,7 @@ export const FormEdit = () => {
           name="title"
           onChange={handleChangeForm}
         />
-        
+
         <TextField
           fullWidth
           id="outlined-multiline-static"
@@ -120,6 +120,7 @@ export const FormEdit = () => {
           rows={10}
           value={description}
           name="description"
+          style={{textAlign: 'justify'}}
           onChange={handleChangeForm}
         />
         <TextField
@@ -146,6 +147,7 @@ export const FormEdit = () => {
           variant="outlined"
           value={author}
           name="author"
+          disabled ={'false'}
           onChange={handleChangeForm}
         />
         <Box display={'flex'} justifyContent={'center'} >
