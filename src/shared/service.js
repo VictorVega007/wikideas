@@ -73,3 +73,16 @@ export const enviarDatos = async (datos) => {
   return respuestaJson;
 };
 
+export const updateTopic = async (datos) => {
+  const id = datos.id;
+  const respuesta = await fetch(`http://localhost:8000/api/v1/topics/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(datos)
+  });
+  const respuestaJson = await respuesta.json();
+  return respuestaJson;
+};
+

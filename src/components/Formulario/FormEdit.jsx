@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
   TextField,
@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useParams } from 'react-router-dom';
 import NavigationIcon from "@mui/icons-material/Navigation";
-import { getTopicById, enviarDatos } from "../../shared/service";
+import { getTopicById, updateTopic } from "../../shared/service";
 
 export const FormEdit = (props) => {
   //const { id } = useParams();
@@ -22,6 +22,7 @@ export const FormEdit = (props) => {
   const [category, setCategory] = useState(null);
   const [ID, setID] = useState(props.id);
   const [categoryID, setCategoryID] = useState(null);
+  const inputRef = useRef();
 
   useEffect(() => {
     const getTopic = async() =>{
@@ -57,6 +58,16 @@ export const FormEdit = (props) => {
     tags: "",
   });
 
+  const [nuevoFormulario, setNuevoFormulario] = useState({
+    id: ID,
+    title2: "",
+    description2: "",
+    category2: "",
+    author2: "",
+    image2: "",
+    tags2: "",
+  });
+
   async function handleChangeForm(e){
     const value = e.target.type==='select-one' ? e.target.selectedOptions[0].value : e.target.value;
     setFormulario({
@@ -67,9 +78,8 @@ export const FormEdit = (props) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    formulario.tags = formulario.tags.split(' ')
-    console.log(formulario);
-    const respuesta = await enviarDatos(formulario);
+    nuevoFormulario.tags2 = nuevoFormulario.tags2.split(' ')
+    const respuesta = await updateTopic(nuevoFormulario);
     console.log(respuesta);
   }
   
@@ -98,8 +108,13 @@ export const FormEdit = (props) => {
           id="outlined-basic"
           variant="outlined"
           value={category}
-          name="title"
-          onChange={handleChangeForm}
+          name="category"
+          onChange={(e) =>
+            setNuevoFormulario(formulario => ({
+              ...formulario,
+              category2: e.target.value
+            }))
+          }
           disabled ={'false'}
         />  
         
@@ -110,7 +125,12 @@ export const FormEdit = (props) => {
           variant="outlined"
           value={title}
           name="title"
-          onChange={handleChangeForm}
+          onChange={(e) =>
+            setNuevoFormulario(formulario => ({
+              ...formulario,
+              title2: e.target.value
+            }))
+          }
         />
 
         <TextField
@@ -121,7 +141,12 @@ export const FormEdit = (props) => {
           value={description}
           name="description"
           style={{textAlign: 'justify'}}
-          onChange={handleChangeForm}
+          onChange={(e) =>
+            setNuevoFormulario(formulario => ({
+              ...formulario,
+              description2: e.target.value
+            }))
+          }
         />
         <TextField
           fullWidth
@@ -129,7 +154,12 @@ export const FormEdit = (props) => {
           variant="outlined"
           value={url}
           name="image"
-          onChange={handleChangeForm}
+          onChange={(e) =>
+            setNuevoFormulario(formulario => ({
+              ...formulario,
+              url2: e.target.value
+            }))
+          }
         />
         <TextField
           fullWidth
@@ -139,7 +169,12 @@ export const FormEdit = (props) => {
           name="tags"
           multiline
           maxRows={3}
-          onChange={handleChangeForm}
+          onChange={(e) =>
+            setNuevoFormulario(formulario => ({
+              ...formulario,
+              tags2: e.target.value
+            }))
+          }
         />
         <TextField
           fullWidth
@@ -148,7 +183,12 @@ export const FormEdit = (props) => {
           value={author}
           name="author"
           disabled ={'false'}
-          onChange={handleChangeForm}
+          onChange={(e) =>
+            setNuevoFormulario(formulario => ({
+              ...formulario,
+              author2: e.target.value
+            }))
+          }
         />
         <Box display={'flex'} justifyContent={'center'} >
         <Fab variant="extended" type="submit">
