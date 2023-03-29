@@ -91,7 +91,7 @@ export const FormEdit = () => {
       <Box component="form" autoComplete="off" sx={{
           '& > :not(style)': { m: 0.5},
         }}>
-        <InputLabel id="demo-simple-select-label"  fullWidth>Categoría</InputLabel>
+        <InputLabel id="demo-simple-select-label"  fullWidth></InputLabel>
         <TextField
           style={{ backgroundColor: "ffffff" }}
           fullWidth
@@ -102,7 +102,7 @@ export const FormEdit = () => {
           onChange={handleChangeForm}
           disabled ={'false'}
         />  
-        
+
           <TextField
           style={{ backgroundColor: "ffffff" }}
           fullWidth
