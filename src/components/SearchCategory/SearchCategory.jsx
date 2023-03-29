@@ -21,6 +21,7 @@ export const SearchCategory = () => {
 
   const handleClick = () => {
     navigate(`/categories/${found.id}`)
+    window.location.reload()
   }
 
 
