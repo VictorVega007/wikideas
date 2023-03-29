@@ -49,10 +49,11 @@ export const FormEdit = (props) => {
 
   
   const [formulario, setFormulario] = useState({
+    id: ID,
     title: "",
     description: "",
-    category: "",
-    author: "",
+    category: category,
+    author: author,
     image: "",
     tags: "",
   });
@@ -71,18 +72,18 @@ export const FormEdit = (props) => {
     const value = e.target.type==='select-one' ? e.target.selectedOptions[0].value : e.target.value;
     setFormulario({
       ...formulario,
-      [e.target.name]: value,
+      [e.target.name]:  e.target.value,
     });
   };
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    nuevoFormulario.tags2 = nuevoFormulario.tags2.split(' ')
-    console.log(nuevoFormulario);
-    const respuesta = await updateTopic(nuevoFormulario);
+    formulario.tags = formulario.tags.split(' ')
+    console.log(formulario);
+    const respuesta = await updateTopic(formulario);
     console.log(respuesta);
     props.cerrar()
-    window.location.reload()
+    //window.location.reload()
   }
   
 
@@ -112,10 +113,10 @@ export const FormEdit = (props) => {
           value={category}
           name="title"
           onChange={(e) =>{
-            setTitle(e.target.value)
-            setNuevoFormulario(formulario => ({
+            setCategory(e.target.value)
+            setFormulario(formulario => ({
               ...formulario,
-              title2: e.target.value
+              category: e.target.value
             }))}
           }
           disabled ={'false'}
@@ -130,9 +131,9 @@ export const FormEdit = (props) => {
           name="title"
           onChange={(e) =>{
             setTitle(e.target.value)
-            setNuevoFormulario(formulario => ({
+            setFormulario(formulario => ({
               ...formulario,
-              title2: e.target.value
+              title: e.target.value
             }))}
           }
         />
@@ -145,11 +146,11 @@ export const FormEdit = (props) => {
           value={description}
           name="description"
           style={{textAlign: 'justify'}}
-          oonChange={(e) =>{
-            setTitle(e.target.value)
-            setNuevoFormulario(formulario => ({
+          onChange={(e) =>{
+            setDescription(e.target.value)
+            setFormulario(formulario => ({
               ...formulario,
-              title2: e.target.value
+              description: e.target.value
             }))}
           }
         />
@@ -160,10 +161,10 @@ export const FormEdit = (props) => {
           value={url}
           name="image"
           onChange={(e) =>{
-            setTitle(e.target.value)
-            setNuevoFormulario(formulario => ({
+            setUrl(e.target.value)
+            setFormulario(formulario => ({
               ...formulario,
-              title2: e.target.value
+              image: e.target.value
             }))}
           }
         />
@@ -176,10 +177,10 @@ export const FormEdit = (props) => {
           multiline
           maxRows={3}
           onChange={(e) =>{
-            setTitle(e.target.value)
-            setNuevoFormulario(formulario => ({
+            setTags(e.target.value)
+            setFormulario(formulario => ({
               ...formulario,
-              title2: e.target.value
+              tags: e.target.value
             }))}
           }
         />
@@ -191,10 +192,10 @@ export const FormEdit = (props) => {
           name="author"
           disabled ={'false'}
           onChange={(e) =>{
-            setTitle(e.target.value)
-            setNuevoFormulario(formulario => ({
+            setAuthor(e.target.value)
+            setFormulario(formulario => ({
               ...formulario,
-              title2: e.target.value
+              author: e.target.value
             }))}
           }
         />

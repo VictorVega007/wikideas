@@ -167,7 +167,7 @@ export const Tema = () =>{
                         </Typography>
                         {dateUpd}
                     </Item>
-                    <Modal className='modal' isOpen={modalIsOpen}>
+                    <Modal className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                     <FormEdit cerrar={closeModal} />
                     </Modal>
                     <Item display={"flex"} alignItems={"center"} justifyContent={"center"}>
