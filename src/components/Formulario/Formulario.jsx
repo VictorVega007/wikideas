@@ -43,19 +43,10 @@ export const FormularioAlta = (props) => {
   };
 
   const handleSubmit = async(e) => {
-    e.preventDefault();
+    props.closeModal()
     formulario.tags = formulario.tags.split(' ')
     console.log(formulario);
-    const respuesta = await enviarDatos(formulario);
-    /*setFormulario({
-      title: "",
-      description: "",
-      category: "",
-      author: "",
-      image: "",
-      tags: "",
-    })*/
-    props.closeModal()
+    const respuesta = await enviarDatos(formulario);    
   }
   
 

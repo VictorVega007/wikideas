@@ -8,12 +8,10 @@ import {
   FormControl,
   Fab,
 } from "@mui/material";
-import { useParams } from 'react-router-dom';
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { getTopicById, updateTopic } from "../../shared/service";
 
 export const FormEdit = (props) => {
-  //const { id } = useParams();
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState();
   const [url, setUrl] = useState(null);
@@ -22,7 +20,6 @@ export const FormEdit = (props) => {
   const [category, setCategory] = useState(null);
   const [ID, setID] = useState(props.id);
   const [categoryID, setCategoryID] = useState(null);
-  const inputRef = useRef();
 
   useEffect(() => {
     const getTopic = async() =>{
