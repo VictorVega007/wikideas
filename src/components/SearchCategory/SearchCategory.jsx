@@ -2,13 +2,12 @@ import { Autocomplete, Stack, TextField } from "@mui/material"
 import { Button } from "../../atoms/button/Button";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import {} from '../../styles/navbar.scss';
-// import { getTopics } from "../../shared/service";
-import { useData } from "../../hook/useData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import { getCategories } from "../../shared/service";
 
 export const SearchCategory = () => {
-  const { data } = useData("https://wikideas-adriana75.vercel.app/api/v1/categories");
+  const [data, setData ] = useState();
   const [selectedValue, setSelectedValue] = useState(null);
   const [found, setFound] = useState();
   const navigate = useNavigate();
@@ -23,6 +22,17 @@ export const SearchCategory = () => {
     navigate(`/categories/${found.id}`)
     window.location.reload()
   }
+
+  useEffect(() => {
+    const obtenerCategories = async() => {
+      const response = await getCategories();
+      const datos = response;
+      setData(datos);
+    }
+    obtenerCategories()
+    
+  }, [])
+  
 
 
   return (
