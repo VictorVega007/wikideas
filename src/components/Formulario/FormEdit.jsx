@@ -12,7 +12,6 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import { getTopicById, updateTopic } from "../../shared/service";
 
 export const FormEdit = (props) => {
-  const { id } = useParams();
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState();
   const [url, setUrl] = useState(null);
@@ -78,7 +77,6 @@ export const FormEdit = (props) => {
     e.preventDefault();
     nuevoFormulario.tags2 = nuevoFormulario.tags2.split(' ')
     const respuesta = await updateTopic(nuevoFormulario);
-    console.log(respuesta);
     window.location.reload();
   }
   
