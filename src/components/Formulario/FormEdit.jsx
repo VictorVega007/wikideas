@@ -12,20 +12,20 @@ import { useParams } from 'react-router-dom';
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { getTopicById, enviarDatos } from "../../shared/service";
 
-export const FormEdit = () => {
-  const { id } = useParams();
+export const FormEdit = (props) => {
+  //const { id } = useParams();
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState();
   const [url, setUrl] = useState(null);
   const [tags, setTags] = useState(null);
   const [author, setAuthor] = useState(null);
   const [category, setCategory] = useState(null);
-  const [ID, setID] = useState(id);
+  const [ID, setID] = useState(props.id);
   const [categoryID, setCategoryID] = useState(null);
 
   useEffect(() => {
     const getTopic = async() =>{
-      const response = await getTopicById(Number(ID));
+            const response = await getTopicById(Number(ID));
             const title = response.title;
             const description = response.description;
             const url = response.image;

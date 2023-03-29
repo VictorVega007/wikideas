@@ -163,7 +163,7 @@ export const Tema = () =>{
                         {dateUpd}
                     </Item>
                     <Modal className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                    <FormEdit />
+                    <FormEdit id = {ID}/>
                     </Modal>
                     <Item display={"flex"} alignItems={"center"} justifyContent={"center"}>
                         <Button color="secondary" onClick={openModal}>EDITAR</Button>
