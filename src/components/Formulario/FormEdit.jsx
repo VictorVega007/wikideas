@@ -126,11 +126,13 @@ export const FormEdit = (props) => {
           variant="outlined"
           value={title}
           name="title"
-          onChange={(e) =>
+          disabled ={false}
+          onChange={(e) =>{
+            setTitle(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
               title2: e.target.value
-            }))
+            }))}
           }
         />
 
@@ -142,11 +144,12 @@ export const FormEdit = (props) => {
           value={description}
           name="description"
           style={{textAlign: 'justify'}}
-          onChange={(e) =>
+          onChange={(e) =>{
+            setDescription(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
               description2: e.target.value
-            }))
+            }))}
           }
         />
         <TextField
@@ -155,11 +158,12 @@ export const FormEdit = (props) => {
           variant="outlined"
           value={url}
           name="image"
-          onChange={(e) =>
+          onChange={(e) =>{
+            setUrl(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
               url2: e.target.value
-            }))
+            }))}
           }
         />
         <TextField
@@ -170,12 +174,14 @@ export const FormEdit = (props) => {
           name="tags"
           multiline
           maxRows={3}
-          onChange={(e) =>
+          onChange={(e) =>{
+            setTags(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
               tags2: e.target.value
-            }))
+            }))}
           }
+          
         />
         <TextField
           fullWidth
