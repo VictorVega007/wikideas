@@ -23,6 +23,10 @@ export const NavBar = (props) => {
     setModalIsOpen(true);
   }
 
+  function closeModal() {
+    setModalIsOpen(false);
+  }
+
   const handleOpenNavMenu = (event) => {
     setAnchorNav(event.currentTarget);
   };
@@ -143,8 +147,8 @@ export const NavBar = (props) => {
               </Button>
               </NavLink>
 
-              <Modal  className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                        <FormularioAlta />
+              <Modal  className='modal' isOpen={modalIsOpen}>
+                        <FormularioAlta closeModal={closeModal} />
                </Modal>
               <Button
                 onClick={openModal}
