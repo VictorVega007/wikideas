@@ -72,7 +72,7 @@ export const CardSwipeable = () => {
           </Typography>
         </CardContent>
         <CardActions sx={{display: "flex", justifyContent: "flex-end", paddingRight: 3}}>
-          <Button size="small" color="secondary">Share</Button>
+          {/*<Button size="small" color="secondary">Share</Button>*/}
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
     <Fab color='secondary' size="medium" onClick={() => navigate(`/tema/${item.id}`)}>
       <AutoStoriesIcon color='ffffff'/>
