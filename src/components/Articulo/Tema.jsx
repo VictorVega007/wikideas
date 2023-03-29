@@ -9,9 +9,12 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import { useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 import {FormEdit} from '../Formulario/FormEdit'
+import { useNavigate } from "react-router-dom";
 
 
 export const Tema = () =>{
+
+    const navigate = useNavigate();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -109,9 +112,7 @@ export const Tema = () =>{
                         <List>
                             {titleTopic?.map(e=>(
                                 <ListItem button divider >
-                                    <ListItemText primary={e.title} onClick={()=>{
-                                        setID(e.id)
-                                    }}/>
+                                    <ListItemText primary={e.title} onClick={()=>{setID(e.id); navigate(`/tema/${e.id}`)}}/>
                                 </ListItem>
                             ))}
                         </List>
