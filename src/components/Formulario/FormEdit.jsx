@@ -96,7 +96,6 @@ export const FormEdit = () => {
           style={{ backgroundColor: "ffffff" }}
           fullWidth
           id="outlined-basic"
-          label="Title"
           variant="outlined"
           value={title}
           name="title"
@@ -123,7 +122,6 @@ export const FormEdit = () => {
         <TextField
           fullWidth
           id="outlined-multiline-static"
-          label="Description"
           multiline
           rows={10}
           value={description}
@@ -133,7 +131,6 @@ export const FormEdit = () => {
         <TextField
           fullWidth
           id="outlined-basic"
-          label="Image"
           variant="outlined"
           value={url}
           name="image"
@@ -142,7 +139,6 @@ export const FormEdit = () => {
         <TextField
           fullWidth
           id="outlined-multiline-flexible"
-          label="Tags"
           variant="outlined"
           value={tags}
           name="tags"
@@ -153,7 +149,6 @@ export const FormEdit = () => {
         <TextField
           fullWidth
           id="outlined-basic"
-          label="Author"
           variant="outlined"
           value={author}
           name="author"
