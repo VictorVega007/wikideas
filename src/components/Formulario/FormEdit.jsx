@@ -10,15 +10,17 @@ import {
 } from "@mui/material";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { getTopicById, updateTopic } from "../../shared/service";
+import { useParams } from 'react-router-dom';
 
 export const FormEdit = (props) => {
+  const { id } = useParams();
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState();
   const [url, setUrl] = useState(null);
   const [tags, setTags] = useState(null);
   const [author, setAuthor] = useState(null);
   const [category, setCategory] = useState(null);
-  const [ID, setID] = useState(props.id);
+  const [ID, setID] = useState(id);
   const [categoryID, setCategoryID] = useState(null);
 
   useEffect(() => {
@@ -76,8 +78,11 @@ export const FormEdit = (props) => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     nuevoFormulario.tags2 = nuevoFormulario.tags2.split(' ')
+    console.log(nuevoFormulario);
     const respuesta = await updateTopic(nuevoFormulario);
-    window.location.reload();
+    console.log(respuesta);
+    props.cerrar()
+    window.location.reload()
   }
   
 
@@ -105,12 +110,13 @@ export const FormEdit = (props) => {
           id="outlined-basic"
           variant="outlined"
           value={category}
-          name="category"
-          onChange={(e) =>
+          name="title"
+          onChange={(e) =>{
+            setTitle(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
-              category2: e.target.value
-            }))
+              title2: e.target.value
+            }))}
           }
           disabled ={'false'}
         />  
@@ -122,7 +128,6 @@ export const FormEdit = (props) => {
           variant="outlined"
           value={title}
           name="title"
-          disabled ={false}
           onChange={(e) =>{
             setTitle(e.target.value)
             setNuevoFormulario(formulario => ({
@@ -140,11 +145,11 @@ export const FormEdit = (props) => {
           value={description}
           name="description"
           style={{textAlign: 'justify'}}
-          onChange={(e) =>{
-            setDescription(e.target.value)
+          oonChange={(e) =>{
+            setTitle(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
-              description2: e.target.value
+              title2: e.target.value
             }))}
           }
         />
@@ -155,10 +160,10 @@ export const FormEdit = (props) => {
           value={url}
           name="image"
           onChange={(e) =>{
-            setUrl(e.target.value)
+            setTitle(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
-              url2: e.target.value
+              title2: e.target.value
             }))}
           }
         />
@@ -171,13 +176,12 @@ export const FormEdit = (props) => {
           multiline
           maxRows={3}
           onChange={(e) =>{
-            setTags(e.target.value)
+            setTitle(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
-              tags2: e.target.value
+              title2: e.target.value
             }))}
           }
-          
         />
         <TextField
           fullWidth
@@ -186,11 +190,12 @@ export const FormEdit = (props) => {
           value={author}
           name="author"
           disabled ={'false'}
-          onChange={(e) =>
+          onChange={(e) =>{
+            setTitle(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
-              author2: e.target.value
-            }))
+              title2: e.target.value
+            }))}
           }
         />
         <Box display={'flex'} justifyContent={'center'} >
