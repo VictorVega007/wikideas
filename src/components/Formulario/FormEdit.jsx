@@ -26,23 +26,23 @@ export const FormEdit = (props) => {
 
   useEffect(() => {
     const getTopic = async() =>{
-            const response = await getTopicById(Number(ID));
-            const title = response.title;
-            const description = response.description;
-            const url = response.image;
-            const tags = response.tags;
-            const author = response.author;
-            const category = response.category.title;
-            const categoryID = response.category.id;
-            
-            setTitle(title);
-            setDescription(description);
-            setUrl(url);
-            setTags(tags);
-            setAuthor(author);
-            setCategory(category);
-            setID(ID);
-            setCategoryID(categoryID);
+        const response = await getTopicById(Number(ID));
+        const title = response.title;
+        const description = response.description;
+        const url = response.image;
+        const tags = response.tags;
+        const author = response.author;
+        const category = response.category.title;
+        const categoryID = response.category.id;
+        
+        setTitle(title);
+        setDescription(description);
+        setUrl(url);
+        setTags(tags);
+        setAuthor(author);
+        setCategory(category);
+        setID(ID);
+        setCategoryID(categoryID);
 
     };
     getTopic();
@@ -81,6 +81,7 @@ export const FormEdit = (props) => {
     nuevoFormulario.tags2 = nuevoFormulario.tags2.split(' ')
     const respuesta = await updateTopic(nuevoFormulario);
     console.log(respuesta);
+    window.location.reload();
   }
   
 

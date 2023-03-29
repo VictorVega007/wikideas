@@ -11,7 +11,7 @@ import {
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { getCategories, enviarDatos } from "../../shared/service";
 
-export const FormularioAlta = () => {
+export const FormularioAlta = (props) => {
   const [categories, setCategories] = useState()
 
   useEffect(() => {
@@ -47,7 +47,15 @@ export const FormularioAlta = () => {
     formulario.tags = formulario.tags.split(' ')
     console.log(formulario);
     const respuesta = await enviarDatos(formulario);
-    console.log(respuesta);
+    /*setFormulario({
+      title: "",
+      description: "",
+      category: "",
+      author: "",
+      image: "",
+      tags: "",
+    })*/
+    props.closeModal()
   }
   
 
@@ -68,17 +76,6 @@ export const FormularioAlta = () => {
       <Box component="form" autoComplete="off" sx={{
           '& > :not(style)': { m: 0.5},
         }}>
-        
-          <TextField
-          style={{ backgroundColor: "ffffff" }}
-          fullWidth
-          id="outlined-basic"
-          label="Title"
-          variant="outlined"
-          value={formulario.title}
-          name="title"
-          onChange={handleChangeForm}
-        />
 
 <FormControl fullWidth>
       <InputLabel id="demo-simple-select-label">Categoria</InputLabel>
@@ -96,6 +93,18 @@ export const FormularioAlta = () => {
           ))}
 </Select>
       </FormControl>
+        
+          <TextField
+          style={{ backgroundColor: "ffffff" }}
+          fullWidth
+          id="outlined-basic"
+          label="Title"
+          variant="outlined"
+          value={formulario.title}
+          name="title"
+          onChange={handleChangeForm}
+        />
+
 
         <TextField
           fullWidth
