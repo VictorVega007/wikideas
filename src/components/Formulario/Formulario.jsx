@@ -11,7 +11,7 @@ import {
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { getCategories, enviarDatos } from "../../shared/service";
 
-export const FormularioAlta = () => {
+export const FormularioAlta = (props) => {
   const [categories, setCategories] = useState()
 
   useEffect(() => {
@@ -48,6 +48,7 @@ export const FormularioAlta = () => {
     console.log(formulario);
     const respuesta = await enviarDatos(formulario);
     console.log(respuesta);
+    props.cerrar()
   }
   
 

@@ -22,6 +22,10 @@ export const Tema = () =>{
     setModalIsOpen(true);
   }
 
+  function closeModal (){
+    setModalIsOpen(false)
+  }
+
     const { id } = useParams();
     const [title, setTitle] = useState(null);
     const [description, setDescription] = useState();
@@ -163,8 +167,8 @@ export const Tema = () =>{
                         </Typography>
                         {dateUpd}
                     </Item>
-                    <Modal className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                    <FormEdit id={ID}/>
+                    <Modal className='modal' isOpen={modalIsOpen}>
+                    <FormEdit cerrar={closeModal} />
                     </Modal>
                     <Item display={"flex"} alignItems={"center"} justifyContent={"center"}>
                         <Button color="secondary" onClick={openModal}>EDITAR</Button>

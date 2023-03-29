@@ -148,7 +148,7 @@ export const NavBar = (props) => {
               </NavLink>
 
               <Modal  className='modal' isOpen={modalIsOpen}>
-                        <FormularioAlta closeModal={closeModal} />
+                        <FormularioAlta cerrar={closeModal} />
                </Modal>
               <Button
                 onClick={openModal}
