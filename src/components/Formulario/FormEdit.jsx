@@ -8,21 +8,44 @@ import {
   FormControl,
   Fab,
 } from "@mui/material";
+import { useParams } from 'react-router-dom';
 import NavigationIcon from "@mui/icons-material/Navigation";
-import { getCategories, enviarDatos } from "../../shared/service";
+import { getTopicById, enviarDatos } from "../../shared/service";
 
-export const FormularioAlta = () => {
-  const [categories, setCategories] = useState()
+export const FormEdit = () => {
+  const { id } = useParams();
+  const [title, setTitle] = useState(null);
+  const [description, setDescription] = useState();
+  const [url, setUrl] = useState(null);
+  const [tags, setTags] = useState(null);
+  const [author, setAuthor] = useState(null);
+  const [category, setCategory] = useState(null);
+  const [ID, setID] = useState(id);
+  const [categoryID, setCategoryID] = useState(null);
 
   useEffect(() => {
-    const getCategoriesTitle = async() =>{
-      const response = await getCategories();
-      const data = response;
-      setCategories(data)
-      console.log(categories);
+    const getTopic = async() =>{
+      const response = await getTopicById(Number(ID));
+            const title = response.title;
+            const description = response.description;
+            const url = response.image;
+            const tags = response.tags;
+            const author = response.author;
+            const category = response.category.title;
+            const categoryID = response.category.id;
+            
+            setTitle(title);
+            setDescription(description);
+            setUrl(url);
+            setTags(tags);
+            setAuthor(author);
+            setCategory(category);
+            setID(ID);
+            setCategoryID(categoryID);
+
     };
-    getCategoriesTitle();
-  }, [])
+    getTopic();
+  }, [ID])
 
   
   const [formulario, setFormulario] = useState({
@@ -68,60 +91,51 @@ export const FormularioAlta = () => {
       <Box component="form" autoComplete="off" sx={{
           '& > :not(style)': { m: 0.5},
         }}>
+        <InputLabel id="demo-simple-select-label"  fullWidth>Categoría</InputLabel>
+        <TextField
+          style={{ backgroundColor: "ffffff" }}
+          fullWidth
+          id="outlined-basic"
+          variant="outlined"
+          value={category}
+          name="title"
+          onChange={handleChangeForm}
+          disabled ={'false'}
+        />  
         
           <TextField
           style={{ backgroundColor: "ffffff" }}
           fullWidth
           id="outlined-basic"
-          label="Title"
           variant="outlined"
-          value={formulario.title}
+          value={title}
           name="title"
           onChange={handleChangeForm}
         />
 
-<FormControl fullWidth>
-      <InputLabel id="demo-simple-select-label">Categoria</InputLabel>
-  <Select
-  fullWidth
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    name="category" 
-    value={formulario.category}
-    label="Categoria"
-    onChange={handleChangeForm}
-  >
-    {categories?.map(e => (
-            <MenuItem key={e.id} value={e.id}>{e.title}</MenuItem>
-          ))}
-</Select>
-      </FormControl>
-
         <TextField
           fullWidth
           id="outlined-multiline-static"
-          label="Description"
           multiline
           rows={10}
-          value={formulario.description}
+          value={description}
           name="description"
+          style={{textAlign: 'justify'}}
           onChange={handleChangeForm}
         />
         <TextField
           fullWidth
           id="outlined-basic"
-          label="Image"
           variant="outlined"
-          value={formulario.image}
+          value={url}
           name="image"
           onChange={handleChangeForm}
         />
         <TextField
           fullWidth
           id="outlined-multiline-flexible"
-          label="Tags"
           variant="outlined"
-          value={formulario.tags}
+          value={tags}
           name="tags"
           multiline
           maxRows={3}
@@ -130,10 +144,10 @@ export const FormularioAlta = () => {
         <TextField
           fullWidth
           id="outlined-basic"
-          label="Author"
           variant="outlined"
-          value={formulario.author}
+          value={author}
           name="author"
+          disabled ={'false'}
           onChange={handleChangeForm}
         />
         <Box display={'flex'} justifyContent={'center'} >

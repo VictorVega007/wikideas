@@ -13,6 +13,7 @@ const settings = [ 'Perfil', 'Cuenta', 'Dashboard', 'Cerrar Sesión' ];
 
 export const NavBar = (props) => {
 
+
   const { color } = props;
   const [ anchorNav, setAnchorNav ] = useState(null);
   const [ anchorUser , setAnchorUser ] = useState(null);
@@ -141,17 +142,10 @@ export const NavBar = (props) => {
                 {categories}
               </Button>
               </NavLink>
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ 
-                  my: 2, 
-                  color: 'white', 
-                  display: 'block', 
-                  width: '10%', 
-                }}
-              >
-                {about}
-              </Button>
+
+              <Modal  className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                        <FormularioAlta />
+               </Modal>
               <Button
                 onClick={openModal}
                 sx={{ 
@@ -163,6 +157,20 @@ export const NavBar = (props) => {
               >
                 {blog}
               </Button>
+              
+              <NavLink to="/nosotros" className="links-decoration">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ 
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  width: '100%', 
+                }}
+              >
+                {about}
+              </Button>
+              </NavLink>
           </Box>
 
           <Box sx={{ flexGrow: 0, width: '5%' }}>
