@@ -147,9 +147,7 @@ export const NavBar = (props) => {
               </Button>
               </NavLink>
 
-              <Modal  className='modal' isOpen={modalIsOpen}>
-                        <FormularioAlta cerrar={closeModal} />
-               </Modal>
+              
               <Button
                 onClick={openModal}
                 sx={{ 
@@ -161,6 +159,9 @@ export const NavBar = (props) => {
               >
                 {blog}
               </Button>
+              <Modal  className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                <FormularioAlta cerrar={closeModal}/>
+              </Modal>
               
               <NavLink to="/nosotros" className="links-decoration">
               <Button
@@ -208,12 +209,7 @@ export const NavBar = (props) => {
           </Box>
 
         </Toolbar>
-      </Container>
-      <Modal className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-          <FormularioAlta />
-      </Modal>
-
-      
+      </Container>      
     </AppBar>
 
     

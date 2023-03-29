@@ -2,13 +2,12 @@ import { Autocomplete, Stack, TextField } from "@mui/material"
 import { Button } from "../../atoms/button/Button";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import {} from '../../styles/navbar.scss';
-// import { getTopics } from "../../shared/service";
-import { useData } from "../../hook/useData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import { getTopics } from "../../shared/service";
 
 export const SearchInput = () => {
-  const { data } = useData("https://wikideas-adriana75.vercel.app/api/v1/topics");
+  const [data, setData ] = useState();
   const [selectedValue, setSelectedValue] = useState(null);
   const [found, setFound] = useState();
 
@@ -19,6 +18,17 @@ export const SearchInput = () => {
     setSelectedValue(value)
     setFound(data.find(element => element.title == value))
   }
+
+  
+  useEffect(() => {
+    const obtenerTemas = async() => {
+      const response = await getTopics();
+      const datos = response;
+      setData(datos);
+    }
+    obtenerTemas()
+    
+  }, [])
 
   
 

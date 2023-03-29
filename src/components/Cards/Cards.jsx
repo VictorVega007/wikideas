@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import { useNavigate } from "react-router-dom";
+import { getTopics } from '../../shared/service';
 
 import {} from '../../styles/navbar.scss';
 
@@ -19,13 +20,11 @@ export const CardSwipeable = () => {
   const [topicsPerPage, setTopicsPerPage] = useState(3);
 
   useEffect(() => {
-    // función para obtener la información de la base de datos
     const temas = async () => {
-      // Llamar a una API o a una función que obtenga los datos de la base de datos
-      // y luego almacenarlos en el estado local utilizando el hook `setTopics`
-      const resultado = await fetch("https://wikideas-adriana75.vercel.app/api/v1/topics");
-      const datos = await resultado.json();
+      const resultado = await getTopics();
+      const datos = resultado;
       setTopics(datos);
+      console.log(topics);
     };
 
     temas();
@@ -73,7 +72,7 @@ export const CardSwipeable = () => {
           </Typography>
         </CardContent>
         <CardActions sx={{display: "flex", justifyContent: "flex-end", paddingRight: 3}}>
-          <Button size="small" color="secondary">Share</Button>
+          {/*<Button size="small" color="secondary">Share</Button>*/}
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
     <Fab color='secondary' size="medium" onClick={() => navigate(`/tema/${item.id}`)}>
       <AutoStoriesIcon color='ffffff'/>

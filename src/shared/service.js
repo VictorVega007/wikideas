@@ -8,18 +8,18 @@ const getClient = (url) => {
 
 export const getTopics = async () => {
   try {
-    const client = getClient("https://wikideas-adriana75.vercel.app/api/v1/topics/")
-    const response = await client.get();
-    const data = response.data;
+    const client = getClient(`https://wikideas-back.vercel.app/api/v1/topics`)
+    const response = client.get();
+    const data = (await response).data;
     return data;
-  } catch (error) {
+  } catch(error){
     return error.message;
   }
 };
 
 export const getTopicById = async (id) => {
   try {
-  const client = getClient(`https://wikideas-adriana75.vercel.app/api/v1/topics/${id}`)
+    const client = getClient(`https://wikideas-back.vercel.app/api/v1/topics/${id}`)
     const response = client.get();
     const data = (await response).data;
     return data;
@@ -30,7 +30,7 @@ export const getTopicById = async (id) => {
 
 export const getTopicsByCategory = async (category) => {
   try {
-      const client = getClient(`http://localhost:8000/api/v1/topics/?category=${category}`)
+      const client = getClient(`https://wikideas-back.vercel.app/api/v1/topics/?category=${category}`)
       const response = client.get();
       const data = (await response).data;
       return data;
@@ -41,7 +41,7 @@ export const getTopicsByCategory = async (category) => {
 
 export const getCategory = async (id) => {
   try {
-      const client = getClient(`http://localhost:8000/api/v1/categories/${id}`)
+      const client = getClient(`https://wikideas-back.vercel.app/api/v1/categories/${id}`)
       const response = client.get();
       const data = (await response).data;
       return data;
@@ -52,7 +52,7 @@ export const getCategory = async (id) => {
 
 export const getCategories = async () => {
   try {
-      const client = getClient(`http://localhost:8000/api/v1/categories`)
+      const client = getClient(`https://wikideas-back.vercel.app/api/v1/categories`)
       const response = client.get();
       const data = (await response).data;
       return data;
@@ -62,7 +62,7 @@ export const getCategories = async () => {
 }
 
 export const enviarDatos = async (datos) => {
-  const respuesta = await fetch('http://localhost:8000/api/v1/topics/', {
+  const respuesta = await fetch('https://wikideas-back.vercel.app/api/v1/topics/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -75,7 +75,7 @@ export const enviarDatos = async (datos) => {
 
 export const updateTopic = async (datos) => {
   const id = datos.id;
-  const respuesta = await fetch(`http://localhost:8000/api/v1/topics/${id}`, {
+  const respuesta = await fetch(`https://wikideas-back.vercel.app/api/v1/topics/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'

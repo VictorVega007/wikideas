@@ -46,9 +46,9 @@ export const FormularioAlta = (props) => {
     e.preventDefault();
     formulario.tags = formulario.tags.split(' ')
     console.log(formulario);
-    const respuesta = await enviarDatos(formulario);
-    console.log(respuesta);
-    props.cerrar()
+    const respuesta = await enviarDatos(formulario);   
+    props.cerrar() 
+    window.location.reload();
   }
   
 
@@ -69,17 +69,6 @@ export const FormularioAlta = (props) => {
       <Box component="form" autoComplete="off" sx={{
           '& > :not(style)': { m: 0.5},
         }}>
-        
-          <TextField
-          style={{ backgroundColor: "ffffff" }}
-          fullWidth
-          id="outlined-basic"
-          label="Title"
-          variant="outlined"
-          value={formulario.title}
-          name="title"
-          onChange={handleChangeForm}
-        />
 
 <FormControl fullWidth>
       <InputLabel id="demo-simple-select-label">Categoria</InputLabel>
@@ -97,6 +86,18 @@ export const FormularioAlta = (props) => {
           ))}
 </Select>
       </FormControl>
+        
+          <TextField
+          style={{ backgroundColor: "ffffff" }}
+          fullWidth
+          id="outlined-basic"
+          label="Title"
+          variant="outlined"
+          value={formulario.title}
+          name="title"
+          onChange={handleChangeForm}
+        />
+
 
         <TextField
           fullWidth

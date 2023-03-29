@@ -8,7 +8,6 @@ import {
   FormControl,
   Fab,
 } from "@mui/material";
-import { useParams } from 'react-router-dom';
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { getTopicById, updateTopic } from "../../shared/service";
 
@@ -20,28 +19,28 @@ export const FormEdit = (props) => {
   const [tags, setTags] = useState(null);
   const [author, setAuthor] = useState(null);
   const [category, setCategory] = useState(null);
-  const [ID, setID] = useState(id);
+  const [ID, setID] = useState(props.id);
   const [categoryID, setCategoryID] = useState(null);
 
   useEffect(() => {
     const getTopic = async() =>{
-      const response = await getTopicById(Number(ID));
-            const title = response.title;
-            const description = response.description;
-            const url = response.image;
-            const tags = response.tags;
-            const author = response.author;
-            const category = response.category.title;
-            const categoryID = response.category.id;
-            
-            setTitle(title);
-            setDescription(description);
-            setUrl(url);
-            setTags(tags);
-            setAuthor(author);
-            setCategory(category);
-            setID(ID);
-            setCategoryID(categoryID);
+        const response = await getTopicById(Number(ID));
+        const title = response.title;
+        const description = response.description;
+        const url = response.image;
+        const tags = response.tags;
+        const author = response.author;
+        const category = response.category.title;
+        const categoryID = response.category.id;
+        
+        setTitle(title);
+        setDescription(description);
+        setUrl(url);
+        setTags(tags);
+        setAuthor(author);
+        setCategory(category);
+        setID(ID);
+        setCategoryID(categoryID);
 
     };
     getTopic();
@@ -78,11 +77,9 @@ export const FormEdit = (props) => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     nuevoFormulario.tags2 = nuevoFormulario.tags2.split(' ')
-    console.log(nuevoFormulario);
     const respuesta = await updateTopic(nuevoFormulario);
     console.log(respuesta);
-    props.cerrar()
-    window.location.reload()
+    window.location.reload();
   }
   
 
@@ -110,13 +107,12 @@ export const FormEdit = (props) => {
           id="outlined-basic"
           variant="outlined"
           value={category}
-          name="title"
-          onChange={(e) =>{
-            setTitle(e.target.value)
+          name="category"
+          onChange={(e) =>
             setNuevoFormulario(formulario => ({
               ...formulario,
-              title2: e.target.value
-            }))}
+              category2: e.target.value
+            }))
           }
           disabled ={'false'}
         />  
@@ -128,11 +124,14 @@ export const FormEdit = (props) => {
           variant="outlined"
           value={title}
           name="title"
-          onChange={(e) =>
+          disabled ={false}
+          onChange={(e) =>{
+            setTitle(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
               title2: e.target.value
             }))}
+          }
         />
 
         <TextField
@@ -143,11 +142,13 @@ export const FormEdit = (props) => {
           value={description}
           name="description"
           style={{textAlign: 'justify'}}
-          onChange={(e) =>
+          onChange={(e) =>{
+            setDescription(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
               description2: e.target.value
             }))}
+          }
         />
         <TextField
           fullWidth
@@ -155,11 +156,13 @@ export const FormEdit = (props) => {
           variant="outlined"
           value={url}
           name="image"
-          onChange={(e) =>
+          onChange={(e) =>{
+            setUrl(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
-              image2: e.target.value
+              url2: e.target.value
             }))}
+          }
         />
         <TextField
           fullWidth
@@ -169,11 +172,14 @@ export const FormEdit = (props) => {
           name="tags"
           multiline
           maxRows={3}
-          onChange={(e) =>
+          onChange={(e) =>{
+            setTags(e.target.value)
             setNuevoFormulario(formulario => ({
               ...formulario,
               tags2: e.target.value
             }))}
+          }
+          
         />
         <TextField
           fullWidth
@@ -186,7 +192,8 @@ export const FormEdit = (props) => {
             setNuevoFormulario(formulario => ({
               ...formulario,
               author2: e.target.value
-            }))}
+            }))
+          }
         />
         <Box display={'flex'} justifyContent={'center'} >
         <Fab variant="extended" type="submit">
