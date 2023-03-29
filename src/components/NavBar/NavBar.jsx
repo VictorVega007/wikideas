@@ -159,7 +159,7 @@ export const NavBar = (props) => {
               >
                 {blog}
               </Button>
-              <Modal  className='modal' isOpen={modalIsOpen} onClose={closeModal}>
+              <Modal  className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                 <FormularioAlta cerrar={closeModal}/>
               </Modal>
               
