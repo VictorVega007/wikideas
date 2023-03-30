@@ -83,12 +83,12 @@ export const Tema = () =>{
         for(let i=0; i<longitud; i++){
             if(i%3==2){
                 arr.push(union);
-                union="";
+                union = description.split('.')[i] + ".";
             }else {
                 union += description.split('.')[i] + ".";
             }    
         }
-
+        arr.push(union)
        }catch(err){
             return null;
        }
@@ -168,7 +168,7 @@ export const Tema = () =>{
                         {dateUpd}
                     </Item>
                     <Modal className='modal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                    <FormEdit cerrar={closeModal} />
+                    <FormEdit cerrar={closeModal}  id = {ID} />
                     </Modal>
                     <Item display={"flex"} alignItems={"center"} justifyContent={"center"}>
                         <Button color="secondary" onClick={openModal}>EDITAR</Button>
