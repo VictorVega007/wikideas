@@ -80,6 +80,7 @@ export const FormularioAlta = (props) => {
     value={formulario.category}
     label="Categoria"
     onChange={handleChangeForm}
+    required
   >
     {categories?.map(e => (
             <MenuItem key={e.id} value={e.id}>{e.title}</MenuItem>
@@ -96,6 +97,7 @@ export const FormularioAlta = (props) => {
           value={formulario.title}
           name="title"
           onChange={handleChangeForm}
+          required
         />
 
 
@@ -108,6 +110,7 @@ export const FormularioAlta = (props) => {
           value={formulario.description}
           name="description"
           onChange={handleChangeForm}
+          required
         />
         <TextField
           fullWidth
@@ -117,6 +120,7 @@ export const FormularioAlta = (props) => {
           value={formulario.image}
           name="image"
           onChange={handleChangeForm}
+          required
         />
         <TextField
           fullWidth
@@ -128,6 +132,7 @@ export const FormularioAlta = (props) => {
           multiline
           maxRows={3}
           onChange={handleChangeForm}
+          required
         />
         <TextField
           fullWidth
@@ -137,6 +142,7 @@ export const FormularioAlta = (props) => {
           value={formulario.author}
           name="author"
           onChange={handleChangeForm}
+          required
         />
         <Box display={'flex'} justifyContent={'center'} >
         <Fab variant="extended" type="submit">
