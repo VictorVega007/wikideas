@@ -133,6 +133,7 @@ export const FormEdit = (props) => {
             }))
           }
           disabled ={'false'}
+          required
         />  
         
           <TextField
@@ -150,6 +151,7 @@ export const FormEdit = (props) => {
               title: e.target.value
             }))}
           }
+          required
         />
 
         <TextField
@@ -167,6 +169,7 @@ export const FormEdit = (props) => {
               description: e.target.value
             }))}
           }
+          required
         />
         <TextField
           fullWidth
@@ -181,6 +184,7 @@ export const FormEdit = (props) => {
               url: e.target.value
             }))}
           }
+          required
         />
         <TextField
           fullWidth
@@ -198,7 +202,7 @@ export const FormEdit = (props) => {
               tags: e.target.value
             }))}
           }
-          
+          required
         />
         <TextField
           fullWidth
@@ -213,6 +217,7 @@ export const FormEdit = (props) => {
               author: e.target.value
             }))
           }
+          required
         />
         <Box display={'flex'} justifyContent={'center'} >
         <Fab variant="extended" type="submit">
