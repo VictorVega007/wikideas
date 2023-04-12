@@ -34,17 +34,17 @@ export const Nosotros = () => {
         </Typography>
         <br />
         <Typography>
-          “Ser una enciclopedia libre que todos pueden editar” y se explica por los siguientes tres principios: ​
+          “Ser una enciclopedia libre que todos pueden editar” y se explica por los siguientes tres principios:
         </Typography>
         <List>
           <ListItem>
-          · Es una enciclopedia, entendida como soporte que permite la recopilación, el almacenamiento y la transmisión de la información de forma estructurada.
+          <Typography>· Es una enciclopedia, entendida como soporte que permite la recopilación, el almacenamiento y la transmisión de la información de forma estructurada.</Typography>
           </ListItem>
           <ListItem>
-          · Es un wiki, por lo que, con pequeñas excepciones, puede ser editada por cualquiera.
+          <Typography>· Es un wiki, por lo que, con pequeñas excepciones, puede ser editada por cualquiera.</Typography>
           </ListItem>
           <ListItem>
-          · Es de contenido abierto.
+          <Typography>· Es de contenido abierto.</Typography>
           </ListItem>
         </List>
           <Typography>
@@ -52,19 +52,19 @@ export const Nosotros = () => {
         </Typography>
         <List>
           <ListItem>
-          · Es una enciclopedia.
+          <Typography>· Es una enciclopedia.</Typography>
           </ListItem>
           <ListItem>
-          · Busca un «punto de vista neutral».
+          <Typography>· Busca un «punto de vista neutral».</Typography>
           </ListItem>
           <ListItem>
-          · Es de contenido libre.
+          <Typography>· Es de contenido libre.</Typography>
           </ListItem>
           <ListItem>
-          · Sigue unas reglas de etiqueta.
+          <Typography>· Sigue unas reglas de etiqueta.</Typography>
           </ListItem>
           <ListItem>
-          · No tiene normas fijas.
+          <Typography>· No tiene normas fijas.</Typography>
           </ListItem>
           </List>
           <Grid className="static-img-container" style={{position: 'absolute', bottom: 50, left:100}}>
